@@ -14,7 +14,7 @@ export function DinersSection() {
       </Reveal>
       <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {diners.cards.map((card) => (
-          <Reveal key={card.title}><FeatureCard card={card} variant="image" /></Reveal>
+          <Reveal key={card.title}><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
       </div>
       <div className="mt-14 max-w-[520px]">
