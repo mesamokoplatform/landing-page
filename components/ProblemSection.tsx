@@ -5,7 +5,7 @@ import { Reveal } from "./ui/Reveal";
 
 export function ProblemSection() {
   return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
+    <section className="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           <div className="relative aspect-[59/55] w-full overflow-hidden">
