@@ -21,7 +21,9 @@ describe("WaitlistForm", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="diner" />);
     await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
+    await userEvent.type(screen.getByLabelText("Name"), "Jane Diner");
     await userEvent.type(screen.getByPlaceholderText("you@example.com"), "me@example.com");
+    await userEvent.type(screen.getByLabelText("Instagram"), "@jane");
     await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
     expect(fetchMock).toHaveBeenCalledWith(
@@ -31,6 +33,8 @@ describe("WaitlistForm", () => {
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.access_key).toBe("test-key");
     expect(body.email).toBe("me@example.com");
+    expect(body.name).toBe("Jane Diner");
+    expect(body.instagram).toBe("@jane");
   });
 
   it("posts to Web3Forms and shows success for restaurant audience", async () => {
@@ -39,7 +43,10 @@ describe("WaitlistForm", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="restaurant" />);
     await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
+    await userEvent.type(screen.getByLabelText("Contact name"), "Sam Owner");
+    await userEvent.type(screen.getByLabelText("Restaurant name"), "The Table");
     await userEvent.type(screen.getByPlaceholderText("you@example.com"), "restaurant@example.com");
+    await userEvent.type(screen.getByLabelText("Postcode"), "E1 6QL");
     await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
     expect(fetchMock).toHaveBeenCalledWith(
@@ -49,5 +56,7 @@ describe("WaitlistForm", () => {
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.access_key).toBe("resto-key");
     expect(body.email).toBe("restaurant@example.com");
+    expect(body.restaurant_name).toBe("The Table");
+    expect(body.postcode).toBe("E1 6QL");
   });
 });
