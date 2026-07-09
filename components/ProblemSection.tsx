@@ -13,8 +13,8 @@ export function ProblemSection() {
           </div>
         </Reveal>
         <Reveal>
-          <h2 className="max-w-[18ch] font-serif text-[34px] leading-tight md:text-[44px]">{problem.heading}</h2>
-          <p className="mt-6 max-w-[36ch] text-[18px] leading-snug text-muted">{problem.body}</p>
+          <h2 className="max-w-[18ch] font-serif font-semibold text-[34px] leading-tight md:text-[44px]">{problem.heading}</h2>
+          <p className="mt-6 max-w-[36ch] font-serif text-[18px] leading-snug text-ink/90">{problem.body}</p>
           <div className="mt-10 flex flex-wrap gap-3">
             <ArrowButton href={nav[0].href} variant="filled">For Restaurants</ArrowButton>
             <ArrowButton href={nav[1].href} variant="outline">For Diners</ArrowButton>

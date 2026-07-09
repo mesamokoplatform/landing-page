@@ -16,6 +16,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
     audience === "restaurant"
       ? process.env.NEXT_PUBLIC_WEB3FORMS_KEY_RESTAURANT
       : process.env.NEXT_PUBLIC_WEB3FORMS_KEY_DINER;
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
 
@@ -40,6 +41,11 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
     } catch {
       setState("error");
     }
+  }
+
+  // Match the Wix mockup: a single CTA button that expands into the capture form.
+  if (!open) {
+    return <ArrowButton onClick={() => setOpen(true)}>{CTA[audience]}</ArrowButton>;
   }
 
   if (state === "done") {

@@ -6,10 +6,12 @@ import { WaitlistForm } from "./WaitlistForm";
 describe("WaitlistForm", () => {
   afterEach(() => { vi.unstubAllEnvs(); vi.restoreAllMocks(); });
 
-  it("disables submission and warns when no key is configured", () => {
+  it("disables submission and warns when no key is configured", async () => {
     vi.stubEnv("NEXT_PUBLIC_WEB3FORMS_KEY_DINER", "");
     render(<WaitlistForm audience="diner" />);
-    expect(screen.getByRole("button")).toBeDisabled();
+    // The CTA button expands into the capture form on click.
+    await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
+    expect(screen.getByRole("button", { name: /join the waitlist/i })).toBeDisabled();
     expect(screen.getByText(/not yet configured/i)).toBeInTheDocument();
   });
 
@@ -18,6 +20,7 @@ describe("WaitlistForm", () => {
     const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ success: true }) });
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="diner" />);
+    await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
     await userEvent.type(screen.getByPlaceholderText("you@example.com"), "me@example.com");
     await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
@@ -35,6 +38,7 @@ describe("WaitlistForm", () => {
     const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ success: true }) });
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="restaurant" />);
+    await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
     await userEvent.type(screen.getByPlaceholderText("you@example.com"), "restaurant@example.com");
     await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
