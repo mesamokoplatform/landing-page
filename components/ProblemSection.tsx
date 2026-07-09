@@ -9,9 +9,7 @@ export function ProblemSection() {
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           <div className="relative aspect-[59/55] w-full overflow-hidden">
-            {/* Video is scaled slightly taller and anchored to the top so the studio
-                backdrop seam near the bottom of the source clip is cropped out. */}
-            <VideoLoop src={problem.media} className="absolute inset-x-0 top-0 h-[116%] w-full object-cover" />
+            <VideoLoop src={problem.media} className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </Reveal>
         <Reveal>
