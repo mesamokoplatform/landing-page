@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { asset } from "@/lib/asset";
 
 // Minimum time the monogram stays up so it reads as intentional, not a flash.
-const MIN_DISPLAY_MS = 900;
+const MIN_DISPLAY_MS = 1200;
 // Fade-out duration; keep in sync with the `duration-500` class below.
 const FADE_MS = 500;
 const SEEN_KEY = "mm-splash-seen";
