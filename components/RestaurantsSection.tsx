@@ -9,8 +9,8 @@ export function RestaurantsSection() {
     <section id="restaurants" className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
-        <h2 className="font-serif text-[34px] leading-tight text-balance md:text-[44px]">{restaurants.heading}</h2>
-        <p className="mt-5 max-w-[46ch] font-serif text-[18px] leading-snug text-ink/90">{restaurants.intro}</p>
+        <h2 className="font-serif text-[28px] leading-tight text-balance md:text-[36px]">{restaurants.heading}</h2>
+        <p className="mt-5 max-w-[46ch] font-serif text-[20px] leading-snug text-ink/90">{restaurants.intro}</p>
       </Reveal>
       <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {restaurants.cards.map((card) => (

@@ -36,7 +36,7 @@ export function FeatureCard({
           <img src={asset(card.media)} alt={card.title} className={mediaClass} />
         )}
       </div>
-      <h3 className="mt-5 text-[24px] leading-tight font-serif font-semibold">{card.title}</h3>
+      <h3 className="mt-5 text-[28px] leading-tight font-serif">{card.title}</h3>
       <p className="mt-4 text-[16px] leading-snug text-ink/90 font-serif">{card.body}</p>
     </div>
   );

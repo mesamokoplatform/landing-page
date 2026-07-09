@@ -19,7 +19,7 @@ export function Footer() {
                 key={s.label}
                 href={s.href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="label-sans inline-flex items-center gap-2 text-[13px]"
+                className="label-sans inline-flex items-center gap-2 text-[14px]"
               >
                 {s.label} <span aria-hidden="true">&#8594;</span>
               </a>
