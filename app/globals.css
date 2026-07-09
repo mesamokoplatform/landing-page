@@ -20,10 +20,8 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.02em;
 }
 
-/* Loading splash: gentle entrance, and instant hide for repeat visits this
-   session (the class is set by an inline <head> script before first paint). */
-/* Scale-only entrance: the monogram is always fully opaque, so it stays
-   visible even if the animation is throttled (e.g. a backgrounded tab). */
+/* Loading splash — scale-only entrance so the monogram is always fully opaque
+   and stays visible even if the animation is throttled (e.g. a backgrounded tab). */
 @keyframes mmSplashIn {
   from { transform: scale(0.96); }
   to { transform: scale(1); }
@@ -33,4 +31,3 @@ html { scroll-behavior: smooth; }
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
-.splash-seen #mm-splash { display: none; }
