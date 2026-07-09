@@ -8,22 +8,10 @@ export const metadata: Metadata = {
   description: "Premium digital menus. Data-rich insights. Elevated guest experiences.",
 };
 
-// Runs before first paint: if the splash was already shown this session, hide it
-// instantly so returning visitors never see it flash.
-const splashSeenScript = `try{if(sessionStorage.getItem("mm-splash-seen"))document.documentElement.classList.add("splash-seen")}catch(e){}`;
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // The inline script below mutates <html>'s class before hydration (to hide
-    // the splash for repeat visits), so suppress the expected attribute mismatch.
-    <html lang="en" className={`${cormorant.variable} ${syne.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: splashSeenScript }} />
-      </head>
-      {/* Semibold Cormorant to match the Wix reference, which renders all its
-          serif text in the SemiBold cut. Hero (font-bold) and Syne labels
-          (.label-sans) set their own weight and override this. */}
-      <body className="bg-white text-ink font-serif font-semibold antialiased">
+    <html lang="en" className={`${cormorant.variable} ${syne.variable}`}>
+      <body className="bg-white text-ink font-serif antialiased">
         <LoadingSplash />
         {children}
       </body>
