@@ -14,7 +14,9 @@ const splashSeenScript = `try{if(sessionStorage.getItem("mm-splash-seen"))docume
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${syne.variable}`}>
+    // The inline script below mutates <html>'s class before hydration (to hide
+    // the splash for repeat visits), so suppress the expected attribute mismatch.
+    <html lang="en" className={`${cormorant.variable} ${syne.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: splashSeenScript }} />
       </head>
