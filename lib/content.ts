@@ -82,11 +82,9 @@ export const diners = {
   ] as Card[],
 };
 
-// Footer now has four links. hrefs are placeholders until the real targets are
-// supplied (LinkedIn/Instagram/TikTok profile URLs + a contact email for EMAIL).
 export const social = [
-  { label: "Email", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "Tik Tok", href: "#" },
+  { label: "Email", href: "mailto:contact@mesamoko.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/mesa-moko" },
+  { label: "Instagram", href: "https://www.instagram.com/mesamoko" },
+  { label: "Tik Tok", href: "https://www.tiktok.com/@mesamoko" },
 ];
