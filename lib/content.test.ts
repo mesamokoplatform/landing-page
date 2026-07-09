@@ -3,7 +3,7 @@ import { hero, restaurants, diners, nav, social } from "./content";
 
 describe("content", () => {
   it("has verbatim hero copy", () => {
-    expect(hero.title).toBe("Welcome to the Future of Smart, Visual Dining");
+    expect(hero.title).toBe("Welcome To The Future Of Smart, Visual Dining.");
     expect(hero.lines).toEqual([
       "Premium digital menus.",
       "Data-rich insights.",
@@ -16,14 +16,19 @@ describe("content", () => {
   });
   it("keeps exact restaurant card titles", () => {
     expect(restaurants.cards.map((c) => c.title)).toEqual([
-      "Drive more orders and increase revenue",
-      "Help diners book with confidence and decide faster",
-      "Make instant updates with no reprints or QR codes",
-      "Elevate your brand and stand out from the crowd",
+      "Know What Your Menu Is Worth:",
+      "Build deep, lasting relationships and attract new ones:",
+      "Make instant updates with no reprints or QR codes:",
+      "Your silent marketing engine, working 24/7 — elevating your brand:",
     ]);
   });
   it("has nav + social links", () => {
     expect(nav.map((n) => n.href)).toEqual(["#restaurants", "#diners"]);
-    expect(social.map((s) => s.label)).toEqual(["Instagram", "Tik Tok"]);
+    expect(social.map((s) => s.label)).toEqual([
+      "Email",
+      "LinkedIn",
+      "Instagram",
+      "Tik Tok",
+    ]);
   });
 });
