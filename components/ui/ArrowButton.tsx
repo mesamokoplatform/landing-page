@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 type Variant = "filled" | "outline";
 
 const base =
-  "label-sans inline-flex items-center gap-3 px-4 py-2.5 text-[13px] leading-none border transition-colors duration-200";
+  "label-sans inline-flex items-center gap-3 px-4 py-2.5 text-[14px] leading-none border transition-colors duration-200";
 const styles: Record<Variant, string> = {
   filled: "bg-ink text-white border-ink hover:bg-transparent hover:text-ink",
   outline: "bg-transparent text-ink border-ink hover:bg-ink hover:text-white",

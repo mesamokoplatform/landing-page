@@ -15,7 +15,7 @@ html { scroll-behavior: smooth; }
 /* Syne label style shared by buttons / nav / eyebrows */
 .label-sans {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
