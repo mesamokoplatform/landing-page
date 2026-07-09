@@ -10,6 +10,16 @@ export function VideoLoop({ src, className = "" }: { src: string; className?: st
     const v = ref.current;
     if (!v) return;
     v.muted = true;
+    v.volume = 0;
+    // Some browsers expose native controls (PiP / media session) that can unmute.
+    // Re-clamp on any volume change so audio can never be turned on.
+    const forceMute = () => {
+      if (!v.muted || v.volume !== 0) {
+        v.muted = true;
+        v.volume = 0;
+      }
+    };
+    v.addEventListener("volumechange", forceMute);
     const play = () => {
       try {
         // play() returns a promise in modern browsers, undefined in older ones.
@@ -22,7 +32,10 @@ export function VideoLoop({ src, className = "" }: { src: string; className?: st
     play();
     // Retry once the frame is decodable, in case the first attempt was too early.
     v.addEventListener("canplay", play, { once: true });
-    return () => v.removeEventListener("canplay", play);
+    return () => {
+      v.removeEventListener("canplay", play);
+      v.removeEventListener("volumechange", forceMute);
+    };
   }, []);
   return (
     <video
@@ -34,6 +47,9 @@ export function VideoLoop({ src, className = "" }: { src: string; className?: st
       loop
       playsInline
       preload="metadata"
+      controls={false}
+      disableRemotePlayback
+      onContextMenu={(e) => e.preventDefault()}
     />
   );
 }
