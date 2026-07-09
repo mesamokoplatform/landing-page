@@ -26,8 +26,3 @@ html { scroll-behavior: smooth; }
   from { transform: scale(0.96); }
   to { transform: scale(1); }
 }
-/* Loading bar fill, left to right. */
-@keyframes mmLoadBar {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}

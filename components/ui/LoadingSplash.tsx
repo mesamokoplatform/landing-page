@@ -12,10 +12,18 @@ const FADE_MS = 300;
 export function LoadingSplash() {
   const [gone, setGone] = useState(false);
   const [hiding, setHiding] = useState(false);
+  // Starts at scaleX(0); flipped to 1 on the next frame so the CSS transition
+  // animates the fill left-to-right. Driven by inline transform (not Tailwind's
+  // `scale-x-*`, which sets the independent `scale` property and would pin the
+  // bar to zero width regardless of the transition).
+  const [filled, setFilled] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     let fadeTimer = 0;
+    const raf = requestAnimationFrame(() => {
+      if (!cancelled) setFilled(true);
+    });
     const barTimer = window.setTimeout(() => {
       if (cancelled) return;
       setHiding(true);
@@ -26,6 +34,7 @@ export function LoadingSplash() {
     }, BAR_MS);
     return () => {
       cancelled = true;
+      cancelAnimationFrame(raf);
       clearTimeout(barTimer);
       clearTimeout(fadeTimer);
     };
@@ -50,7 +59,10 @@ export function LoadingSplash() {
       />
       {/* Loading bar: fills left-to-right over BAR_MS, then the splash fades. */}
       <div className="h-0.5 w-44 overflow-hidden bg-ink/15">
-        <div className="h-full w-full origin-left scale-x-0 bg-ink motion-safe:animate-[mmLoadBar_1550ms_ease-in-out_forwards] motion-reduce:scale-x-100" />
+        <div
+          className="h-full w-full origin-left bg-ink transition-transform ease-in-out motion-reduce:transition-none"
+          style={{ transform: `scaleX(${filled ? 1 : 0})`, transitionDuration: `${BAR_MS}ms` }}
+        />
       </div>
       <span className="font-serif text-[22px] uppercase tracking-[0.22em] text-ink/50 sm:text-[26px]">
         Mesa Moko
