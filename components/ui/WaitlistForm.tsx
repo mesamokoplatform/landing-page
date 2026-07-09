@@ -1,5 +1,6 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { asset } from "@/lib/asset";
 import { ArrowButton } from "./ArrowButton";
 
 type Field = { name: string; label: string; type?: string; required?: boolean; placeholder?: string };
@@ -13,19 +14,17 @@ const SUBJECT = {
 // Restaurant and diner leads capture different information.
 const FIELDS: Record<"restaurant" | "diner", Field[]> = {
   restaurant: [
-    { name: "contact_name", label: "Contact name", required: true, placeholder: "Your name" },
-    { name: "restaurant_name", label: "Restaurant name", required: true, placeholder: "Restaurant name" },
-    { name: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
-    { name: "phone", label: "Phone", type: "tel", placeholder: "Phone number" },
-    { name: "city", label: "City / area", placeholder: "e.g. Shoreditch, London" },
-    { name: "postcode", label: "Postcode", placeholder: "Postcode" },
+    { name: "restaurant_name", label: "Restaurant Name", required: true, placeholder: "Your Name" },
+    { name: "contact_name", label: "Contact Name", required: true, placeholder: "Your Name" },
+    { name: "email", label: "Email", type: "email", required: true, placeholder: "Your Email" },
+    { name: "postcode", label: "Postcode", placeholder: "Your Postcode" },
+    { name: "city", label: "City", placeholder: "Your City" },
   ],
   diner: [
-    { name: "name", label: "Name", required: true, placeholder: "Your name" },
-    { name: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
-    { name: "city", label: "City / area", placeholder: "Where you're based" },
-    { name: "instagram", label: "Instagram", placeholder: "@instagram" },
-    { name: "tiktok", label: "TikTok", placeholder: "@tiktok" },
+    { name: "name", label: "Full Name", required: true, placeholder: "Your Name" },
+    { name: "email", label: "Email", type: "email", required: true, placeholder: "Your Email" },
+    { name: "instagram", label: "Instagram (Optional)", placeholder: "Your Instagram" },
+    { name: "tiktok", label: "Tik Tok (Optional)", placeholder: "Your Tik Tok" },
   ],
 };
 
@@ -41,6 +40,21 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<Record<string, string>>({});
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+
+  // Lock body scroll and allow Escape to close while the modal is open.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -65,39 +79,64 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
     }
   }
 
-  // Match the Wix mockup: a single CTA button that expands into the capture form.
+  // Collapsed: a filled CTA button (matching the section on the Wix site).
   if (!open) {
     return <ArrowButton onClick={() => setOpen(true)}>{CTA[audience]}</ArrowButton>;
   }
 
-  if (state === "done") {
-    return <p className="text-[15px] text-ink">You&apos;re on the list — thank you.</p>;
-  }
-
+  // Open: a full-screen modal with the MM monogram and the capture form.
   return (
-    <form onSubmit={onSubmit} className="flex w-full flex-col gap-3">
-      {fields.map((f) => (
-        <input
-          key={f.name}
-          type={f.type ?? "text"}
-          name={f.name}
-          required={f.required}
-          aria-label={f.label}
-          placeholder={f.placeholder ?? f.label}
-          value={values[f.name] ?? ""}
-          onChange={(e) => setValues((v) => ({ ...v, [f.name]: e.target.value }))}
-          className="w-full border border-ink/40 px-4 py-2.5 text-[15px] outline-none focus:border-ink"
-        />
-      ))}
-      {/* honeypot */}
-      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
-      <div className="mt-1">
-        <ArrowButton type="submit" disabled={!key || state === "sending"}>
-          {CTA[audience]}
-        </ArrowButton>
+    <div role="dialog" aria-modal="true" className="fixed inset-0 z-[100] overflow-y-auto bg-white">
+      <button
+        type="button"
+        aria-label="Close"
+        onClick={() => setOpen(false)}
+        className="absolute right-6 top-6 text-[34px] leading-none text-ink/60 transition-colors hover:text-ink md:right-10 md:top-8"
+      >
+        &#215;
+      </button>
+      <div className="mx-auto flex min-h-full w-full max-w-[560px] flex-col px-6 py-16">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={asset("/images/monogram.jpg")} alt="Mesa Moko" className="mx-auto h-32 w-auto" />
+
+        {state === "done" ? (
+          <p className="mt-16 text-center font-serif text-[22px] text-ink">
+            You&apos;re on the list — thank you.
+          </p>
+        ) : (
+          <form onSubmit={onSubmit} className="mt-16 flex flex-col gap-8">
+            {fields.map((f) => {
+              const id = `${audience}-${f.name}`;
+              return (
+                <div key={f.name} className="flex flex-col gap-3">
+                  <label htmlFor={id} className="font-serif text-[15px] text-ink">{f.label}</label>
+                  <input
+                    id={id}
+                    type={f.type ?? "text"}
+                    name={f.name}
+                    required={f.required}
+                    placeholder={f.placeholder ?? f.label}
+                    value={values[f.name] ?? ""}
+                    onChange={(e) => setValues((v) => ({ ...v, [f.name]: e.target.value }))}
+                    className="border-b border-ink/30 bg-transparent pb-2 font-serif text-[22px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-ink"
+                  />
+                </div>
+              );
+            })}
+            {/* honeypot */}
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+            <div className="mt-4">
+              <ArrowButton variant="outline" type="submit" disabled={!key || state === "sending"}>
+                {CTA[audience]}
+              </ArrowButton>
+            </div>
+            {!key && <p className="text-[13px] text-muted">Waitlist not yet configured.</p>}
+            {state === "error" && (
+              <p className="text-[13px] text-red-700">Something went wrong — please try again.</p>
+            )}
+          </form>
+        )}
       </div>
-      {!key && <p className="text-[13px] text-muted">Waitlist not yet configured.</p>}
-      {state === "error" && <p className="text-[13px] text-red-700">Something went wrong — please try again.</p>}
-    </form>
+    </div>
   );
 }

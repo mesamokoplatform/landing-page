@@ -21,9 +21,9 @@ describe("WaitlistForm", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="diner" />);
     await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
-    await userEvent.type(screen.getByLabelText("Name"), "Jane Diner");
-    await userEvent.type(screen.getByPlaceholderText("you@example.com"), "me@example.com");
-    await userEvent.type(screen.getByLabelText("Instagram"), "@jane");
+    await userEvent.type(screen.getByLabelText("Full Name"), "Jane Diner");
+    await userEvent.type(screen.getByLabelText("Email"), "me@example.com");
+    await userEvent.type(screen.getByLabelText(/instagram/i), "@jane");
     await userEvent.click(screen.getByRole("button", { name: /join the waitlist/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
     expect(fetchMock).toHaveBeenCalledWith(
@@ -43,9 +43,9 @@ describe("WaitlistForm", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<WaitlistForm audience="restaurant" />);
     await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
-    await userEvent.type(screen.getByLabelText("Contact name"), "Sam Owner");
-    await userEvent.type(screen.getByLabelText("Restaurant name"), "The Table");
-    await userEvent.type(screen.getByPlaceholderText("you@example.com"), "restaurant@example.com");
+    await userEvent.type(screen.getByLabelText("Contact Name"), "Sam Owner");
+    await userEvent.type(screen.getByLabelText("Restaurant Name"), "The Table");
+    await userEvent.type(screen.getByLabelText("Email"), "restaurant@example.com");
     await userEvent.type(screen.getByLabelText("Postcode"), "E1 6QL");
     await userEvent.click(screen.getByRole("button", { name: /become a partner restaurant/i }));
     await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
