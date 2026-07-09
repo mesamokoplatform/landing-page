@@ -46,25 +46,27 @@ export function LoadingSplash() {
     <div
       id="mm-splash"
       aria-hidden="true"
-      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-7 bg-[#f6f4ef] transition-opacity duration-300 ease-out ${
+      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-[#f6f4ef] transition-opacity duration-300 ease-out ${
         hiding ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      {/* White-background JPEG blended into the cream via multiply. */}
+      {/* White-background JPEG blended into the cream via multiply. Sized to
+          match the mesamoko.com splash monogram (~216px). */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={asset("/images/monogram.jpg")}
         alt=""
-        className="h-24 w-auto mix-blend-multiply motion-safe:animate-[mmSplashIn_500ms_ease-out] sm:h-28"
+        className="h-[180px] w-auto mix-blend-multiply motion-safe:animate-[mmSplashIn_500ms_ease-out] sm:h-[216px]"
       />
-      {/* Loading bar: fills left-to-right over BAR_MS, then the splash fades. */}
-      <div className="h-0.5 w-44 overflow-hidden bg-ink/15">
+      {/* Loading bar: fills left-to-right over BAR_MS, then the splash fades.
+          Dimensions match the mesamoko.com splash bar (13px × 357px, 80vw cap). */}
+      <div className="h-[13px] w-[357px] max-w-[80vw] overflow-hidden bg-ink/15">
         <div
           className="h-full w-full origin-left bg-ink transition-transform ease-in-out motion-reduce:transition-none"
           style={{ transform: `scaleX(${filled ? 1 : 0})`, transitionDuration: `${BAR_MS}ms` }}
         />
       </div>
-      <span className="font-serif text-[22px] uppercase tracking-[0.22em] text-ink/50 sm:text-[26px]">
+      <span className="font-serif text-[26px] uppercase tracking-[0.22em] text-ink/50 sm:text-[30px]">
         Mesa Moko
       </span>
     </div>
