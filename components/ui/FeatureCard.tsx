@@ -25,7 +25,7 @@ export function FeatureCard({
         }`}
       >
         {variant === "video" ? (
-          <VideoLoop src={card.media} className={mediaClass} />
+          <VideoLoop src={card.media} className={mediaClass} slowMo={grayscale} />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={asset(card.media)} alt={card.title} className={mediaClass} />

@@ -2,7 +2,18 @@
 import { useEffect, useRef } from "react";
 import { asset } from "@/lib/asset";
 
-export function VideoLoop({ src, className = "" }: { src: string; className?: string }) {
+// Playback rate while not hovered (slow-motion); restored to 1x on hover.
+const SLOW_RATE = 0.5;
+
+export function VideoLoop({
+  src,
+  className = "",
+  slowMo = false,
+}: {
+  src: string;
+  className?: string;
+  slowMo?: boolean;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   // Some browsers ignore the `muted` attribute in JSX and gate autoplay behind a
   // gesture — enforce muted and kick off playback imperatively so the loop starts.
@@ -37,6 +48,32 @@ export function VideoLoop({ src, className = "" }: { src: string; className?: st
       v.removeEventListener("volumechange", forceMute);
     };
   }, []);
+
+  // Slow-motion until hovered: run at SLOW_RATE by default and restore to 1x
+  // while the surrounding card (the same `.group` that reveals colour) is hovered.
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || !slowMo) return;
+    const slow = () => {
+      v.playbackRate = SLOW_RATE;
+    };
+    const normal = () => {
+      v.playbackRate = 1;
+    };
+    slow();
+    // playbackRate can reset to 1 when the media (re)loads — re-apply.
+    v.addEventListener("loadedmetadata", slow);
+    // Tie speed to the same hover target as the colour reveal.
+    const card = (v.closest(".group") as HTMLElement | null) ?? v;
+    card.addEventListener("mouseenter", normal);
+    card.addEventListener("mouseleave", slow);
+    return () => {
+      v.removeEventListener("loadedmetadata", slow);
+      card.removeEventListener("mouseenter", normal);
+      card.removeEventListener("mouseleave", slow);
+    };
+  }, [slowMo]);
+
   return (
     <video
       ref={ref}
