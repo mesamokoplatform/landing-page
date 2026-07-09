@@ -10,7 +10,7 @@ export function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/images/logo.jpg")} alt="Mesa Moko" className="h-7 w-auto" />
         </a>
-        <nav className="flex items-center gap-3">
+        <nav className="hidden items-center gap-3 md:flex">
           <ArrowButton href={nav[0].href} variant="filled">For Restaurants</ArrowButton>
           <ArrowButton href={nav[1].href} variant="outline">For Diners</ArrowButton>
         </nav>
