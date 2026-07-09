@@ -49,10 +49,7 @@ export const restaurants = {
 };
 
 export const diners = {
-  // NOTE: the new Wix draft shows "ELEVATE YOUR PRODUCT" here too — looks like a
-  // copy/paste from the restaurants section. Matching the draft literally; flag to
-  // change to "Elevate your experiences" if that was unintended.
-  eyebrow: "Elevate your product",
+  eyebrow: "Elevate your experiences",
   heading: "Mesa Moko For Diners",
   intro: [
     "Mesa Moko is dining, reimagined — an experience built around you.",
