@@ -6,15 +6,20 @@ export function FeatureCard({
   card,
   variant,
   grayscale = false,
+  dim = false,
 }: {
   card: Card;
   variant: "video" | "image";
   grayscale?: boolean;
+  dim?: boolean;
 }) {
-  // Grayscale cards reveal their colour on hover (transition on the whole card).
-  const mediaClass = `absolute inset-0 h-full w-full object-cover${
-    grayscale ? " grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0" : ""
-  }`;
+  // Hover reveal: grayscale cards desaturate; dim cards darken. Both restore on hover.
+  const effect = grayscale
+    ? " grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
+    : dim
+      ? " brightness-[0.6] transition-[filter] duration-500 ease-out group-hover:brightness-100"
+      : "";
+  const mediaClass = `absolute inset-0 h-full w-full object-cover${effect}`;
   // Restaurant clips are tall 9:16 portraits; diner dishes are near-square, matching the source.
   const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-square";
   return (
