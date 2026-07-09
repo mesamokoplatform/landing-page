@@ -6,48 +6,82 @@ export const nav = [
 ];
 
 export const hero = {
-  title: "Welcome to the Future of Smart, Visual Dining",
+  title: "Welcome To The Future Of Smart, Visual Dining.",
   lines: ["Premium digital menus.", "Data-rich insights.", "Elevated guest experiences."],
+  media: "/video/hero.mp4",
 };
 
 export const problem = {
-  heading: "Menus have not kept up with the visual, personalised expectations of today's diners.",
+  heading:
+    "Menus Have Not Kept Up With The Visual, Personalised Expectations Of Today's Diners.",
   body: "Mesa Moko transforms your static menu into a live, curated experience – tailored to each guest.",
   media: "/video/mockup.mp4",
 };
 
 export const restaurants = {
   eyebrow: "Elevate your product",
-  heading: "Mesa Moko for Restaurants",
+  heading: "Mesa Moko For Restaurants",
   intro:
-    "Mesa Moko empowers visionary restaurants to deliver interactive menus and provide visual storytelling to customers before the first bite.",
+    "Mesa Moko empowers visionary restaurants to deliver beautiful, immersive menus and provide visual storytelling to diners before the first bite.",
   cta: "Become a Partner Restaurant",
   cards: [
-    { title: "Drive more orders and increase revenue", body: "Professional, stunning visuals of each dish boosts diner engagement and sales", media: "/video/restaurant-1.mp4" },
-    { title: "Help diners book with confidence and decide faster", body: "Smart, detailed menus reduce walkaways and indecision", media: "/video/restaurant-2.mp4" },
-    { title: "Make instant updates with no reprints or QR codes", body: "Real-time digital menus keep things effortless and current", media: "/video/restaurant-3.mp4" },
-    { title: "Elevate your brand and stand out from the crowd", body: "Share your story, creativity and signature dishes with every diner", media: "/video/restaurant-4.mp4" },
+    {
+      title: "Know What Your Menu Is Worth:",
+      body: "Understand how your dishes perform against the market and ensure every plate is priced to reflect its true value. Stunning visuals turn every dish into a discovery moment, increasing diner engagement and spend.",
+      media: "/video/restaurant-1.mp4",
+    },
+    {
+      title: "Build deep, lasting relationships and attract new ones:",
+      body: "Keep your most interested diners up to date with menu changes and the inspiration behind your dishes. Every new dish you upload is a new opportunity to be discovered by diners who have never heard of you.",
+      media: "/video/restaurant-2.mp4",
+    },
+    {
+      title: "Make instant updates with no reprints or QR codes:",
+      body: "Real-time digital menus keep things effortless and current — accessible to every diner, wherever they are.",
+      media: "/video/restaurant-3.mp4",
+    },
+    {
+      title: "Your silent marketing engine, working 24/7 — elevating your brand:",
+      body: "Share your story and creativity with browsing diners most likely to love it — automatically converting them into customers.",
+      media: "/video/restaurant-4.mp4",
+    },
   ] as Card[],
 };
 
 export const diners = {
   eyebrow: "Elevate your experiences",
-  heading: "Mesa Moko for Diners",
+  heading: "Mesa Moko For Diners",
   intro: [
-    "Mesa Moko is dining, reimagined; an experience built around you.",
-    "Browse beautifully curated restaurant menus in one centralised app and make confident, inspired choices.",
+    "Mesa Moko is dining, reimagined — an experience built around you.",
+    "Browse and discover extraordinary restaurants through the food they make, all in one place.",
   ],
   cards: [
-    { title: "Order with confidence and skip the guesswork", body: "See stunning food photography for every dish on the menu before you order", media: "/images/diner-1.png" },
-    { title: "Stay safe with personalised filtering", body: "Menus adapt to your allergies and dietary needs automatically", media: "/images/diner-2.png" },
-    { title: "Explore dishes you'll genuinely love", body: "See customer favourites and receive personalised recommendations based on your dining history", media: "/images/diner-3.png" },
-    { title: "Build your personal food diary", body: "Track what you've tried, share your food moments and save what you want to taste next", media: "/images/diner-4.png" },
+    {
+      title: "Order With Confidence And Skip The Guesswork:",
+      body: "See every dish brought to life through visuals, before deciding where and what to eat.",
+      media: "/images/diner-1.png",
+    },
+    {
+      title: "Every Menu, Made For You:",
+      body: "The more you use Mesa Moko, the better it knows your taste — automatically identifying the one dish on every menu you open that most closely aligns with your taste profile, while flagging those that conflict with your allergens or dietary requirements.",
+      media: "/images/diner-2.png",
+    },
+    {
+      title: "Discover Restaurants Through The Food, Not The Name:",
+      body: "Fall in love with a dish first — then discover which restaurant made it. Learn how they made it, what inspired it and which other dishes on their menu complement it perfectly.",
+      media: "/images/diner-3.png",
+    },
+    {
+      title: "Build Your Personal Food Diary",
+      body: "Track what you've tried, share your food moments and save what you want to taste next.",
+      media: "/images/diner-4.png",
+    },
   ] as Card[],
 };
 
-// hrefs match the live site's placeholder "#" (no real profile URLs published yet);
-// point these at real profiles once they exist.
 export const social = [
-  { label: "Instagram", href: "#" },
-  { label: "Tik Tok", href: "#" },
+  { label: "Email", href: "mailto:contact@mesamoko.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/mesa-moko" },
+  { label: "Instagram", href: "https://www.instagram.com/mesamoko" },
+  { label: "Tik Tok", href: "https://www.tiktok.com/@mesamoko" },
 ];
