@@ -20,7 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: splashSeenScript }} />
       </head>
-      <body className="bg-white text-ink font-serif antialiased">
+      {/* Semibold Cormorant to match the Wix reference, which renders all its
+          serif text in the SemiBold cut. Hero (font-bold) and Syne labels
+          (.label-sans) set their own weight and override this. */}
+      <body className="bg-white text-ink font-serif font-semibold antialiased">
         <LoadingSplash />
         {children}
       </body>
