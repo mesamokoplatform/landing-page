@@ -94,7 +94,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
       className="fixed inset-0 z-[100] overflow-y-auto bg-black/50"
     >
       <div className="flex min-h-full items-center justify-center p-4 sm:p-8">
-        <div className="relative w-full max-w-[840px] bg-white px-6 py-14 sm:px-16 sm:py-16 md:px-24">
+        <div className="relative w-full max-w-[480px] bg-white px-6 py-10 sm:px-10 sm:py-12">
           <button
             type="button"
             aria-label="Close"
@@ -107,14 +107,14 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
           </button>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("/images/monogram.jpg")} alt="Mesa Moko" className="mx-auto h-28 w-auto sm:h-32" />
+          <img src={asset("/images/monogram.jpg")} alt="Mesa Moko" className="mx-auto h-16 w-auto sm:h-20" />
 
           {state === "done" ? (
             <p className="mt-14 text-center font-serif text-[22px] text-ink">
               You&apos;re on the list — thank you.
             </p>
           ) : (
-            <form onSubmit={onSubmit} className="mx-auto mt-12 flex max-w-[440px] flex-col gap-7">
+            <form onSubmit={onSubmit} className="mx-auto mt-10 flex max-w-[440px] flex-col gap-5">
               {fields.map((f) => {
                 const id = `${audience}-${f.name}`;
                 return (
@@ -128,7 +128,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
                       placeholder={f.placeholder ?? f.label}
                       value={values[f.name] ?? ""}
                       onChange={(e) => setValues((v) => ({ ...v, [f.name]: e.target.value }))}
-                      className="border-b border-ink/30 bg-transparent pb-2 font-serif text-[22px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-ink"
+                      className="border-b border-ink/30 bg-transparent pb-2 font-serif text-[17px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-ink"
                     />
                   </div>
                 );
