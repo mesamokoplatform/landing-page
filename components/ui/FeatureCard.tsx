@@ -19,7 +19,11 @@ export function FeatureCard({
   const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-square";
   return (
     <div className="group flex flex-col">
-      <div className={`relative w-full ${aspect} overflow-hidden`}>
+      <div
+        className={`relative w-full ${aspect} overflow-hidden${
+          variant === "video" ? " border border-ink/15" : ""
+        }`}
+      >
         {variant === "video" ? (
           <VideoLoop src={card.media} className={mediaClass} />
         ) : (
