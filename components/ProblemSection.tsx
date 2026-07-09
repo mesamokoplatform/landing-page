@@ -9,7 +9,10 @@ export function ProblemSection() {
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           <div className="relative aspect-[59/55] w-full overflow-hidden">
-            <VideoLoop src={problem.media} className="absolute inset-0 h-full w-full object-cover" />
+            {/* The source clip has a ~2px dark line baked into its bottom edge.
+                Anchor to the top and run a few px taller so overflow-hidden
+                clips that line off. */}
+            <VideoLoop src={problem.media} className="absolute inset-x-0 top-0 h-[calc(100%+6px)] w-full object-cover object-top" />
           </div>
         </Reveal>
         <Reveal>
