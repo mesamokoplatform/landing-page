@@ -9,7 +9,7 @@ export function Hero() {
       <VideoLoop src={hero.media} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/45" />
       <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-6 pb-[14vh] pt-28 md:px-10">
-        <h1 className="max-w-[16ch] font-serif font-semibold text-[34px] leading-[1.2] sm:text-[40px] sm:leading-[1.25] md:text-[46px]">
+        <h1 className="max-w-[16ch] font-serif font-bold text-[34px] leading-[1.2] sm:text-[40px] sm:leading-[1.25] md:text-[46px]">
           {hero.title}
         </h1>
         <div className="mt-6 space-y-1 font-serif text-[20px] text-white/90 md:text-[22px]">
