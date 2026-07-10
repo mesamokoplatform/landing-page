@@ -12,6 +12,14 @@ export function ProblemSection() {
     words.slice(6, 9).join(" "),
     words.slice(9).join(" "),
   ];
+  // Fixed 5 / 6 / 5-word body line breaks:
+  // "Mesa Moko transforms your static" / "menu into a live, curated experience" / "– tailored to each guest."
+  const bodyWords = problem.body.split(" ");
+  const bodyLines = [
+    bodyWords.slice(0, 5).join(" "),
+    bodyWords.slice(5, 11).join(" "),
+    bodyWords.slice(11).join(" "),
+  ];
   return (
     <section className="mx-auto max-w-[1728px] px-6 py-20 md:px-[11%]">
       <div className="grid items-center gap-12 md:grid-cols-2">
@@ -27,7 +35,9 @@ export function ProblemSection() {
           <h2 aria-label={problem.heading} className="font-serif font-semibold text-[30px] leading-tight sm:text-[36px] md:text-[42px]">
             {headingLines.map((l) => (<span key={l} className="block">{l}</span>))}
           </h2>
-          <p className="mt-6 max-w-[36ch] font-serif text-[20px] leading-snug text-ink/90">{problem.body}</p>
+          <p className="mt-6 font-serif text-[20px] leading-snug text-ink/90">
+            {bodyLines.map((l) => (<span key={l} className="block">{l}</span>))}
+          </p>
           <div className="mt-10 flex flex-wrap gap-[27px]">
             <ArrowButton href={nav[0].href} variant="filled">For Restaurants</ArrowButton>
             <ArrowButton href={nav[1].href} variant="outline">For Diners</ArrowButton>
