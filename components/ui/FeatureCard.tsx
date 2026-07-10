@@ -47,8 +47,8 @@ export function FeatureCard({
           ? titleLines.map((l) => (<span key={l} className="block">{l}</span>))
           : card.title}
       </h3>
-      {/* Text is inset ~5px from the image and the body caps ~301px wide, matching the Wix cards. */}
-      <p className="mt-[23px] pl-[5px] pr-[7px] text-[20px] leading-[28px] text-ink/90 font-serif font-semibold">{card.body}</p>
+      {/* Body starts flush with the image/title left edge; a small right inset preserves Wix's line wrapping. */}
+      <p className="mt-[23px] pr-[7px] text-[20px] leading-[28px] text-ink/90 font-serif font-semibold">{card.body}</p>
     </div>
   );
 }
