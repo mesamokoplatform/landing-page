@@ -14,7 +14,8 @@ export function Hero() {
       <VideoLoop src={hero.media} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/45" />
       <div className="relative mx-auto flex min-h-[92vh] max-w-[1728px] flex-col justify-end px-6 pb-[14vh] pt-28 md:px-[11%]">
-        <h1 className="font-serif font-semibold text-[32px] leading-[1.4] sm:text-[40px] md:text-[46px]">
+        {/* aria-label carries the unbroken sentence; the spans only control line wrapping */}
+        <h1 aria-label={hero.title} className="font-serif font-semibold text-[32px] leading-[1.4] sm:text-[40px] md:text-[46px]">
           <span className="block">{line1}</span>
           <span className="block">{line2}</span>
         </h1>

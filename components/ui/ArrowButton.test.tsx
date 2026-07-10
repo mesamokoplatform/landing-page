@@ -7,7 +7,8 @@ describe("ArrowButton", () => {
     render(<ArrowButton href="#restaurants">For Restaurants</ArrowButton>);
     const link = screen.getByRole("link", { name: /for restaurants/i });
     expect(link).toHaveAttribute("href", "#restaurants");
-    expect(link.textContent).toContain("→");
+    // The arrow is a decorative inline SVG (replaced the old "→" glyph)
+    expect(link.querySelector("svg")).toBeTruthy();
   });
   it("renders a button when no href", () => {
     render(<ArrowButton type="submit">Join</ArrowButton>);
