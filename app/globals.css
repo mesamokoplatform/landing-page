@@ -1,9 +1,28 @@
 @import "tailwindcss";
 
+/* Cormorant Garamond SemiBold — the exact self-hosted webfont the Wix reference
+   serves as "cormorantgaramond-semibold" (Google Fonts v5). Two normal weights:
+   the semibold cut (nominal 400) covers everything up to 600; the heavier cut
+   drives 700 (e.g. feature-card titles). */
+@font-face {
+  font-family: "cormorantgaramond-semibold";
+  font-style: normal;
+  font-weight: 100 600;
+  font-display: swap;
+  src: url("./fonts/cormorant-garamond-semibold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "cormorantgaramond-semibold";
+  font-style: normal;
+  font-weight: 601 900;
+  font-display: swap;
+  src: url("./fonts/cormorant-garamond-semibold-700.woff2") format("woff2");
+}
+
 @theme {
   --color-ink: #222222;
   --color-muted: #555555;
-  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-serif: "cormorantgaramond-semibold", var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
 }
 
