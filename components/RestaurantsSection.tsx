@@ -5,12 +5,24 @@ import { Reveal } from "./ui/Reveal";
 import { WaitlistForm } from "./ui/WaitlistForm";
 
 export function RestaurantsSection() {
+  // Fixed 7 / 8 / 5-word intro line breaks:
+  // "Mesa Moko empowers visionary restaurants to deliver" /
+  // "beautiful, immersive menus and provide visual storytelling to" /
+  // "diners before the first bite."
+  const introWords = restaurants.intro.split(" ");
+  const introLines = [
+    introWords.slice(0, 7).join(" "),
+    introWords.slice(7, 15).join(" "),
+    introWords.slice(15).join(" "),
+  ];
   return (
     <section id="restaurants" className="mx-auto px-6 py-20 md:px-[11%]">
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
         <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{restaurants.heading}</h2>
-        <p className="mt-5 max-w-[46ch] font-serif text-[20px] leading-snug text-ink/90">{restaurants.intro}</p>
+        <p className="mt-5 font-serif text-[20px] leading-snug text-ink/90">
+          {introLines.map((l) => (<span key={l} className="block">{l}</span>))}
+        </p>
       </Reveal>
       <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {restaurants.cards.map((card) => (
