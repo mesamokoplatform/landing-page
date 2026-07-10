@@ -41,13 +41,14 @@ export function FeatureCard({
       </div>
       <h3
         aria-label={titleLines.length > 1 ? flatTitle : undefined}
-        className="mt-2.5 text-[26px] leading-tight font-serif font-semibold"
+        className="mt-2.5 pl-[5px] text-[26px] leading-tight font-serif font-semibold"
       >
         {titleLines.length > 1
           ? titleLines.map((l) => (<span key={l} className="block">{l}</span>))
           : card.title}
       </h3>
-      <p className="mt-[23px] text-[20px] leading-snug text-ink/90 font-serif font-semibold">{card.body}</p>
+      {/* Text is inset ~5px from the image and the body caps ~301px wide, matching the Wix cards. */}
+      <p className="mt-[23px] pl-[5px] pr-[7px] text-[20px] leading-[28px] text-ink/90 font-serif font-semibold">{card.body}</p>
     </div>
   );
 }
