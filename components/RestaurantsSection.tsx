@@ -20,7 +20,7 @@ export function RestaurantsSection() {
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
         <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{restaurants.heading}</h2>
-        <p className="mt-5 font-serif font-semibold text-[20px] leading-snug text-ink/90">
+        <p className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">
           {introLines.map((l) => (<span key={l} className="block">{l}</span>))}
         </p>
       </Reveal>
