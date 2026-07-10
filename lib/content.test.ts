@@ -15,7 +15,8 @@ describe("content", () => {
     expect(diners.cards).toHaveLength(4);
   });
   it("keeps exact restaurant card titles", () => {
-    expect(restaurants.cards.map((c) => c.title)).toEqual([
+    // Titles may carry "\n" line-break markers; the copy itself must stay verbatim.
+    expect(restaurants.cards.map((c) => c.title.replace(/\n/g, " "))).toEqual([
       "Know What Your Menu Is Worth:",
       "Build deep, lasting relationships and attract new ones:",
       "Make instant updates with no reprints or QR codes:",
