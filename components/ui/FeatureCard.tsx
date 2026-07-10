@@ -41,7 +41,7 @@ export function FeatureCard({
       </div>
       <h3
         aria-label={titleLines.length > 1 ? flatTitle : undefined}
-        className="mt-2.5 pl-[5px] text-[26px] leading-tight font-serif font-semibold"
+        className="mt-2.5 text-[26px] leading-tight font-serif font-semibold"
       >
         {titleLines.length > 1
           ? titleLines.map((l) => (<span key={l} className="block">{l}</span>))
