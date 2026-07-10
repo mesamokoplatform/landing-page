@@ -35,7 +35,7 @@ export function ProblemSection() {
           <h2 aria-label={problem.heading} className="font-serif font-semibold text-[30px] leading-tight sm:text-[36px] md:text-[42px]">
             {headingLines.map((l) => (<span key={l} className="block">{l}</span>))}
           </h2>
-          <p className="mt-6 font-serif text-[24px] leading-snug text-ink/90">
+          <p className="mt-6 font-serif font-semibold text-[24px] leading-snug text-ink/90">
             {bodyLines.map((l) => (<span key={l} className="block">{l}</span>))}
           </p>
           <div className="mt-10 flex flex-wrap gap-[27px]">
