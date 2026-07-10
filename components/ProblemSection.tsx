@@ -24,7 +24,9 @@ export function ProblemSection() {
     <section className="mx-auto px-6 py-20 md:px-[11%]">
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
-          <div className="relative aspect-[59/55] w-full overflow-hidden">
+          {/* Sized/offset so the phone graphic lands between "k" in Moko and the
+              middle of "a" in Restaurants of the heading below, matching Wix. */}
+          <div className="relative aspect-[59/55] w-[84%] ml-[6.5%] overflow-hidden">
             {/* The source clip has a ~2px dark line baked into its bottom edge.
                 Anchor to the top and run a few px taller so overflow-hidden
                 clips that line off. */}
