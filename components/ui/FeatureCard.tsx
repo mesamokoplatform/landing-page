@@ -26,7 +26,7 @@ export function FeatureCard({
   // Restaurant clips are tall 9:16 portraits; diner dishes are near-square, matching the source.
   const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-[316/323]";
   return (
-    <div className="group flex flex-col">
+    <div className="group grid grid-rows-subgrid row-span-3 gap-y-0">
       <div
         className={`relative w-full ${aspect} overflow-hidden${
           variant === "video" ? " border border-ink/15" : ""
