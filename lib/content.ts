@@ -52,8 +52,8 @@ export const diners = {
   eyebrow: "Elevate your experiences",
   heading: "Mesa Moko For Diners",
   intro: [
-    "Mesa Moko is dining, reimagined — an experience built around you.",
-    "Browse and discover extraordinary restaurants through the food they make, all in one place.",
+    "Mesa Moko is dining, reimagined — an\nexperience built around you.",
+    "Browse and discover extraordinary restaurants\nthrough the food they make, all in one place.",
   ],
   cards: [
     {
