@@ -16,9 +16,11 @@ export function DinersSection() {
           </p>
         ))}
       </Reveal>
-      <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* grid-rows-subgrid on each card keeps titles a uniform height row-wide,
+          so every card's body text starts on the same line. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {diners.cards.map((card) => (
-          <Reveal key={card.title}><FeatureCard card={card} variant="image" dim /></Reveal>
+          <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0"><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
       </div>
       <div className="mt-14 max-w-[520px]">

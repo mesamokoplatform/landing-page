@@ -66,7 +66,7 @@ export function LoadingSplash() {
           style={{ transform: `scaleX(${filled ? 1 : 0})`, transitionDuration: `${BAR_MS}ms` }}
         />
       </div>
-      <span className="font-serif text-[26px] uppercase tracking-[0.22em] text-ink/50 sm:text-[30px]">
+      <span className="font-serif font-semibold text-[26px] uppercase tracking-[0.22em] text-ink/50 sm:text-[30px]">
         Mesa Moko
       </span>
     </div>
