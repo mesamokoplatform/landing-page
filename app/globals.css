@@ -15,9 +15,9 @@ html { scroll-behavior: smooth; }
 /* Syne label style shared by buttons / nav / eyebrows */
 .label-sans {
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.25em;
 }
 
 /* Loading splash — scale-only entrance so the monogram is always fully opaque

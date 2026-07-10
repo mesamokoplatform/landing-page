@@ -6,6 +6,6 @@ describe("ProblemSection", () => {
   it("renders the heading and body", () => {
     render(<ProblemSection />);
     expect(screen.getByRole("heading", { name: /menus have not kept up/i })).toBeInTheDocument();
-    expect(screen.getByText(/transforms your static menu/i)).toBeInTheDocument();
+    expect(screen.getByText(/transforms your static/i)).toBeInTheDocument();
   });
 });

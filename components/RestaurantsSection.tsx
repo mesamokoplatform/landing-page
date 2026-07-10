@@ -6,7 +6,7 @@ import { WaitlistForm } from "./ui/WaitlistForm";
 
 export function RestaurantsSection() {
   return (
-    <section id="restaurants" className="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
+    <section id="restaurants" className="mx-auto px-6 py-20 md:px-[11%]">
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
         <h2 className="font-serif text-[28px] leading-tight text-balance md:text-[36px]">{restaurants.heading}</h2>
