@@ -9,8 +9,12 @@ export function DinersSection() {
     <section id="diners" className="mx-auto px-6 py-20 md:px-[11%]">
       <Reveal>
         <Eyebrow>{diners.eyebrow}</Eyebrow>
-        <h2 className="font-serif text-[28px] leading-tight text-balance md:text-[36px]">{diners.heading}</h2>
-        {diners.intro.map((p) => (<p key={p} className="mt-5 max-w-[46ch] font-serif text-[20px] leading-snug text-ink/90">{p}</p>))}
+        <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{diners.heading}</h2>
+        {diners.intro.map((p) => (
+          <p key={p} className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">
+            {p.split("\n").map((l) => (<span key={l} className="block">{l}</span>))}
+          </p>
+        ))}
       </Reveal>
       <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {diners.cards.map((card) => (

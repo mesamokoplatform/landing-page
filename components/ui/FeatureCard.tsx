@@ -20,8 +20,11 @@ export function FeatureCard({
       ? " brightness-[0.6] transition-[filter] duration-500 ease-out group-hover:brightness-100"
       : "";
   const mediaClass = `absolute inset-0 h-full w-full object-cover${effect}`;
+  // Titles may carry explicit "\n" break points; render each part on its own line.
+  const titleLines = card.title.split("\n");
+  const flatTitle = titleLines.join(" ");
   // Restaurant clips are tall 9:16 portraits; diner dishes are near-square, matching the source.
-  const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-square";
+  const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-[316/323]";
   return (
     <div className="group flex flex-col">
       <div
@@ -33,11 +36,19 @@ export function FeatureCard({
           <VideoLoop src={card.media} className={mediaClass} slowMo={grayscale} />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={asset(card.media)} alt={card.title} className={mediaClass} />
+          <img src={asset(card.media)} alt={flatTitle} className={mediaClass} />
         )}
       </div>
-      <h3 className="mt-5 text-[28px] leading-tight font-serif">{card.title}</h3>
-      <p className="mt-4 text-[16px] leading-snug text-ink/90 font-serif">{card.body}</p>
+      <h3
+        aria-label={titleLines.length > 1 ? flatTitle : undefined}
+        className="mt-2.5 text-[26px] leading-tight font-serif font-bold"
+      >
+        {titleLines.length > 1
+          ? titleLines.map((l) => (<span key={l} className="block">{l}</span>))
+          : card.title}
+      </h3>
+      {/* Body starts flush with the image/title left edge; a small right inset preserves Wix's line wrapping. */}
+      <p className="mt-[23px] pr-[7px] text-[20px] leading-[28px] text-ink/90 font-serif font-semibold">{card.body}</p>
     </div>
   );
 }
