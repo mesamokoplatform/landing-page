@@ -26,22 +26,22 @@ export const restaurants = {
   cta: "Become a Partner Restaurant",
   cards: [
     {
-      title: "Know What Your Menu Is Worth:",
+      title: "Know What Your Menu\nIs Worth:",
       body: "Understand how your dishes perform against the market and ensure every plate is priced to reflect its true value. Stunning visuals turn every dish into a discovery moment, increasing diner engagement and spend.",
       media: "/video/restaurant-1.mp4",
     },
     {
-      title: "Build deep, lasting relationships and attract new ones:",
+      title: "Build deep, lasting relationships\nand attract new ones:",
       body: "Keep your most interested diners up to date with menu changes and the inspiration behind your dishes. Every new dish you upload is a new opportunity to be discovered by diners who have never heard of you.",
       media: "/video/restaurant-2.mp4",
     },
     {
-      title: "Make instant updates with no reprints or QR codes:",
+      title: "Make instant updates with\nno reprints or QR codes:",
       body: "Real-time digital menus keep things effortless and current — accessible to every diner, wherever they are.",
       media: "/video/restaurant-3.mp4",
     },
     {
-      title: "Your silent marketing engine, working 24/7 — elevating your brand:",
+      title: "Your silent marketing engine,\nworking 24/7 — elevating\nyour brand:",
       body: "Share your story and creativity with browsing diners most likely to love it — automatically converting them into customers.",
       media: "/video/restaurant-4.mp4",
     },
