@@ -57,7 +57,7 @@ export const diners = {
   ],
   cards: [
     {
-      title: "Order With Confidence And Skip The Guesswork:",
+      title: "Order With Confidence And\nSkip The Guesswork:",
       body: "See every dish brought to life through visuals, before deciding where and what to eat.",
       media: "/images/diner-1.png",
     },
@@ -67,12 +67,12 @@ export const diners = {
       media: "/images/diner-2.png",
     },
     {
-      title: "Discover Restaurants Through The Food, Not The Name:",
+      title: "Discover Restaurants Through\nThe Food, Not The Name:",
       body: "Fall in love with a dish first — then discover which restaurant made it. Learn how they made it, what inspired it and which other dishes on their menu complement it perfectly.",
       media: "/images/diner-3.png",
     },
     {
-      title: "Build Your Personal Food Diary",
+      title: "Build Your Personal Food\nDiary",
       body: "Track what you've tried, share your food moments and save what you want to taste next.",
       media: "/images/diner-4.png",
     },
