@@ -17,15 +17,15 @@ const FIELDS: Record<"restaurant" | "diner", Field[]> = {
     { name: "restaurant_name", label: "Restaurant Name", required: true, placeholder: "Your Name" },
     { name: "contact_name", label: "Contact Name", required: true, placeholder: "Your Name" },
     { name: "email", label: "Email", type: "email", required: true, placeholder: "Your Email" },
-    { name: "postcode", label: "Postcode", placeholder: "Your Postcode" },
-    { name: "city", label: "City", placeholder: "Your City" },
+    { name: "city", label: "City", required: true, placeholder: "Your City" },
+    { name: "postcode", label: "Postcode", required: true, placeholder: "Your Postcode" },
   ],
   diner: [
     { name: "name", label: "Full Name", required: true, placeholder: "Your Name" },
     { name: "email", label: "Email", type: "email", required: true, placeholder: "Your Email" },
-    { name: "city", label: "City (Optional)", placeholder: "Your City" },
-    { name: "instagram", label: "Instagram (Optional)", placeholder: "Your Instagram" },
-    { name: "tiktok", label: "Tik Tok (Optional)", placeholder: "Your Tik Tok" },
+    { name: "city", label: "City", placeholder: "Your City" },
+    { name: "instagram", label: "Instagram", placeholder: "Your Instagram" },
+    { name: "tiktok", label: "Tik Tok", placeholder: "Your Tik Tok" },
   ],
 };
 
@@ -119,7 +119,10 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
                 const id = `${audience}-${f.name}`;
                 return (
                   <div key={f.name} className="flex flex-col gap-2.5">
-                    <label htmlFor={id} className="font-serif text-[15px] text-ink">{f.label}</label>
+                    <label htmlFor={id} className="font-serif text-[15px] text-ink">
+                      {f.label}
+                      {f.required && <span className="ml-0.5 text-red-600">*</span>}
+                    </label>
                     <input
                       id={id}
                       type={f.type ?? "text"}
