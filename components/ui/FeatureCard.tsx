@@ -24,7 +24,7 @@ export function FeatureCard({
   const titleLines = card.title.split("\n");
   const flatTitle = titleLines.join(" ");
   // Restaurant clips are tall 9:16 portraits; diner dishes are near-square, matching the source.
-  const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-square";
+  const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-[316/323]";
   return (
     <div className="group flex flex-col">
       <div
