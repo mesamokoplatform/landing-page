@@ -21,7 +21,7 @@ export function ProblemSection() {
     bodyWords.slice(11).join(" "),
   ];
   return (
-    <section className="mx-auto max-w-[1728px] px-6 py-20 md:px-[11%]">
+    <section className="mx-auto px-6 py-20 md:px-[11%]">
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           <div className="relative aspect-[59/55] w-full overflow-hidden">
