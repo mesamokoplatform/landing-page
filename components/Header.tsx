@@ -5,7 +5,7 @@ import { ArrowButton } from "./ui/ArrowButton";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-black/10">
-      <div className="mx-auto flex items-center justify-between px-6 py-4 md:pl-[15.2%] md:pr-[14.6%]">
+      <div className="mx-auto flex items-center justify-between px-6 py-4 md:px-0 md:w-[70%] md:max-w-[1360px]">
         <a href="#top" aria-label="Mesa Moko">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/images/logo.jpg")} alt="Mesa Moko" className="h-7 w-auto" />

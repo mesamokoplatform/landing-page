@@ -21,7 +21,7 @@ export function ProblemSection() {
     bodyWords.slice(11).join(" "),
   ];
   return (
-    <section className="mx-auto px-6 py-20 md:pl-[15.2%] md:pr-[14.6%]">
+    <section className="mx-auto px-6 py-20 md:px-0 md:w-[70%] md:max-w-[1360px]">
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           {/* Sized/offset so the phone graphic lands between "k" in Moko and the

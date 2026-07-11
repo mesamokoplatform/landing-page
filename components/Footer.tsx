@@ -4,7 +4,7 @@ import { asset } from "@/lib/asset";
 export function Footer() {
   return (
     <footer className="bg-ink text-white">
-      <div className="mx-auto flex flex-col gap-8 px-6 py-14 md:flex-row md:items-center md:justify-between md:pl-[15.2%] md:pr-[14.6%]">
+      <div className="mx-auto flex flex-col gap-8 px-6 py-14 md:flex-row md:items-center md:justify-between md:px-0 md:w-[70%] md:max-w-[1360px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/images/logo-white.png")}
