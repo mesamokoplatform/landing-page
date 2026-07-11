@@ -29,8 +29,11 @@ export function RestaurantsSection() {
           grid: near-square media in 316px columns with a fixed 32px gap
           (justify-start, so the gap never widens as the viewport grows). 316px
           also gives the two longest titles ("Make instant updates…" and "Your
-          silent marketing engine…") room to break onto their intended lines. */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
+          silent marketing engine…") room to break onto their intended lines.
+          The -0.02em title tracking shaves the longest first line ("Build deep,
+          lasting relationships", ~324px at 26px) down to fit the 316px column so
+          it stays on one line, without dropping the 26px size. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 [&_h3]:tracking-[-0.02em] sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
         {restaurants.cards.map((card) => (
           <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0"><FeatureCard card={card} variant="video" grayscale /></Reveal>
         ))}
