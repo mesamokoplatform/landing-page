@@ -9,10 +9,14 @@ export function VideoLoop({
   src,
   className = "",
   slowMo = false,
+  revealed = false,
 }: {
   src: string;
   className?: string;
   slowMo?: boolean;
+  // Touch-device reveal (card scrolled into view): force full speed, since the
+  // hover events below never fire without a pointer.
+  revealed?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   // Some browsers ignore the `muted` attribute in JSX and gate autoplay behind a
@@ -54,6 +58,11 @@ export function VideoLoop({
   useEffect(() => {
     const v = ref.current;
     if (!v || !slowMo) return;
+    // Touch reveal: run at full speed and skip the hover wiring entirely.
+    if (revealed) {
+      v.playbackRate = 1;
+      return;
+    }
     const slow = () => {
       v.playbackRate = SLOW_RATE;
     };
@@ -72,7 +81,7 @@ export function VideoLoop({
       card.removeEventListener("mouseenter", normal);
       card.removeEventListener("mouseleave", slow);
     };
-  }, [slowMo]);
+  }, [slowMo, revealed]);
 
   return (
     <video
