@@ -54,15 +54,12 @@ export function FeatureCard({
   // Titles may carry explicit "\n" break points; render each part on its own line.
   const titleLines = card.title.split("\n");
   const flatTitle = titleLines.join(" ");
-  // Restaurant clips are tall 9:16 portraits; diner dishes are near-square, matching the source.
-  const aspect = variant === "video" ? "aspect-[9/16]" : "aspect-[316/323]";
+  // Both restaurant clips and diner dishes render in the same near-square box;
+  // the portrait video source is cropped to fill it via object-cover.
+  const aspect = "aspect-[316/323]";
   return (
     <div ref={rootRef} className="group grid grid-rows-subgrid row-span-3 gap-y-0">
-      <div
-        className={`relative w-full ${aspect} overflow-hidden${
-          variant === "video" ? " border border-ink/15" : ""
-        }`}
-      >
+      <div className={`relative w-full ${aspect} overflow-hidden`}>
         {variant === "video" ? (
           <VideoLoop src={card.media} className={mediaClass} slowMo={grayscale} revealed={revealed} />
         ) : (
