@@ -30,6 +30,21 @@ vi.mock("next/font/google", () => {
 window.HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
 window.HTMLMediaElement.prototype.pause = vi.fn();
 
+// jsdom does not implement matchMedia. FeatureCard queries "(hover: hover)" to
+// decide whether to keep desktop hover behavior or reveal on scroll (touch).
+// Report no match (matches:false) so the effect takes the touch branch and
+// wires up the (mocked, non-firing) IntersectionObserver harmlessly.
+window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  addListener: vi.fn(),
+  removeListener: vi.fn(),
+  dispatchEvent: vi.fn(),
+}));
+
 // Mock IntersectionObserver for components that use it. observe() intentionally
 // never fires the callback, so Reveal stays in its pre-reveal (hidden) state
 // under test; RTL DOM queries still see the mounted children regardless.
