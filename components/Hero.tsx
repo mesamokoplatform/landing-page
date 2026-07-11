@@ -25,9 +25,10 @@ export function Hero() {
           {hero.lines.map((l) => (<p key={l}>{l}</p>))}
         </div>
         <div className="mt-12 flex flex-wrap gap-[27px]">
-          {/* Desktop keeps its filled styles; on the solid-black mobile hero both
-              buttons become white outlines, matching the Figma. */}
-          <ArrowButton href={nav[0].href} variant="filled" className="!bg-white !text-ink !border-white max-md:!bg-transparent max-md:!text-white">For Restaurants</ArrowButton>
+          {/* Figma hero: "For Restaurants" is a solid WHITE fill (white bg, ink
+              text) at every width; "For Diners" is a white outline on the black
+              mobile hero and a filled button on desktop. */}
+          <ArrowButton href={nav[0].href} variant="filled" className="!bg-white !text-ink !border-white">For Restaurants</ArrowButton>
           <ArrowButton href={nav[1].href} variant="filled" className="max-md:!bg-transparent max-md:!border-white">For Diners</ArrowButton>
         </div>
       </div>
