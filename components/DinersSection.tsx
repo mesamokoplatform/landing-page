@@ -6,7 +6,7 @@ import { WaitlistForm } from "./ui/WaitlistForm";
 
 export function DinersSection() {
   return (
-    <section id="diners" className="mx-auto px-6 py-20 md:px-0 md:w-[70%] md:max-w-[1360px]">
+    <section id="diners" className="mx-auto px-6 py-20 md:px-10 md:max-w-[1440px]">
       <Reveal>
         <Eyebrow>{diners.eyebrow}</Eyebrow>
         <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{diners.heading}</h2>
