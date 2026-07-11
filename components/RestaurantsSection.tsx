@@ -40,7 +40,7 @@ export function RestaurantsSection() {
           it stays on one line, without dropping the 26px size. */}
       <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 [&_h3]:tracking-[-0.02em] grid-flow-col auto-cols-[80%] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
         {restaurants.cards.map((card) => (
-          <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="video" grayscale /></Reveal>
+          <Reveal key={card.title} threshold={0} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="video" grayscale /></Reveal>
         ))}
       </div>
 

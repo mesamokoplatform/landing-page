@@ -38,7 +38,7 @@ export function DinersSection() {
           exactly (first image on the heading, last on the header CTA). */}
       <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 grid-flow-col auto-cols-[80%] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
         {diners.cards.map((card) => (
-          <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="image" dim /></Reveal>
+          <Reveal key={card.title} threshold={0} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
       </div>
       <div className="mt-14 max-w-[520px]">
