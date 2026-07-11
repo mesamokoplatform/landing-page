@@ -1,7 +1,19 @@
 "use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Reveal({
+  children,
+  className = "",
+  // Fraction of the element that must be visible before it fades in. Defaults
+  // to 0.15 for full-width blocks; the mobile carousel passes 0 so a card that's
+  // only peeking on the edge (~13% visible, below 0.15) still reveals instead of
+  // staying blank until it's scrolled fully into view.
+  threshold = 0.15,
+}: {
+  children: ReactNode;
+  className?: string;
+  threshold?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
@@ -9,11 +21,11 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } },
-      { threshold: 0.15 }
+      { threshold }
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [threshold]);
   return (
     <div
       ref={ref}
