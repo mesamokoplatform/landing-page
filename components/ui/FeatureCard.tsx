@@ -16,17 +16,22 @@ export function FeatureCard({
   dim?: boolean;
 }) {
   // Touch devices have no hover, so the reveal below never fires there. On such
-  // devices (no-hover), reveal each card once it scrolls into view instead; on
-  // hover-capable devices this stays false and the CSS hover drives everything.
+  // devices (no-hover), treat the card nearest the viewport centre as "focused":
+  // reveal it while it's in the central band and re-fade it once it scrolls away
+  // — the touch analogue of desktop hover, where only the focused card shows
+  // colour. On hover-capable devices this stays false and CSS hover drives it.
   const rootRef = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
   useEffect(() => {
     if (window.matchMedia("(hover: hover)").matches) return; // desktop keeps hover
     const el = rootRef.current;
     if (!el) return;
+    // The negative rootMargin shrinks the observer's viewport to a central band,
+    // so a card counts as intersecting only while it's roughly centred; toggle
+    // (not one-shot) so it reverts to faded/grayscale when it leaves the band.
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setRevealed(true); io.disconnect(); } },
-      { threshold: 0.35 }
+      ([e]) => setRevealed(e.isIntersecting),
+      { rootMargin: "-30% 0px -30% 0px" }
     );
     io.observe(el);
     return () => io.disconnect();
