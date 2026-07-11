@@ -19,8 +19,13 @@ export function RestaurantsSection() {
     <section id="restaurants" className="mx-auto px-6 py-20 md:px-10 md:max-w-[1440px]">
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
-        <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{restaurants.heading}</h2>
-        <p className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">
+        {/* Figma mobile uses lowercase "for"; desktop keeps the Wix "For". */}
+        <h2 aria-label={restaurants.heading} className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">
+          Mesa Moko <span className="sm:hidden">for</span><span className="hidden sm:inline">For</span> Restaurants
+        </h2>
+        {/* Mobile: Figma copy, natural wrap. Desktop: Wix copy with fixed breaks. */}
+        <p className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90 sm:hidden">{restaurants.introMobile}</p>
+        <p className="mt-5 hidden font-serif font-semibold text-[24px] leading-snug text-ink/90 sm:block">
           {introLines.map((l) => (<span key={l} className="block">{l}</span>))}
         </p>
       </Reveal>

@@ -76,9 +76,19 @@ export function FeatureCard({
         aria-label={titleLines.length > 1 ? flatTitle : undefined}
         className="mt-2.5 text-[26px] leading-tight font-serif font-bold"
       >
-        {titleLines.length > 1
-          ? titleLines.map((l) => (<span key={l} className="block">{l}</span>))
-          : card.title}
+        {titleLines.length > 1 ? (
+          <>
+            {/* Mobile: let the title wrap naturally (the card is wider than the
+                desktop column, so the fixed breaks would orphan words). */}
+            <span className="sm:hidden">{flatTitle}</span>
+            {/* Desktop: honour the explicit break points, tuned for the 316px column. */}
+            <span className="hidden sm:block">
+              {titleLines.map((l) => (<span key={l} className="block">{l}</span>))}
+            </span>
+          </>
+        ) : (
+          card.title
+        )}
       </h3>
       {/* Body starts flush with the image/title left edge; a small right inset preserves Wix's line wrapping. */}
       <p className="mt-[23px] pr-[7px] text-[20px] leading-[28px] text-ink/90 font-serif font-semibold">{card.body}</p>
