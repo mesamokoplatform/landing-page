@@ -25,8 +25,12 @@ export function ProblemSection() {
       <div className="grid items-center gap-12 md:grid-cols-2">
         <Reveal className="w-full">
           {/* Sized/offset so the phone graphic lands between "k" in Moko and the
-              middle of "a" in Restaurants of the heading below, matching Wix. */}
-          <div className="relative aspect-[59/55] w-[84%] ml-[6.5%] overflow-hidden">
+              middle of the SECOND "a" in Restaurants of the heading below, matching
+              Wix. Those landmarks are fixed offsets from the gutter (heading is a
+              fixed 42px), so on wide screens the phone is a fixed-px box; below
+              1440px (where it would collide with the text) it falls back to a
+              proportional size. */}
+          <div className="relative aspect-[59/55] w-[84%] ml-[6.5%] min-[1440px]:w-[586px] min-[1440px]:ml-[-6px] overflow-hidden">
             {/* The source clip has a ~2px dark line baked into its bottom edge.
                 Anchor to the top and run a few px taller so overflow-hidden
                 clips that line off. */}
