@@ -13,7 +13,7 @@ export function Hero() {
       {/* Full-bleed background video with a dark scrim for legibility */}
       <VideoLoop src={hero.media} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-black/45" />
-      <div className="relative mx-auto flex min-h-[92vh] flex-col justify-end px-6 pb-[14vh] pt-28 md:pl-[15.2%] md:pr-[14.6%]">
+      <div className="relative mx-auto flex min-h-[92vh] flex-col justify-end px-6 pb-[14vh] pt-28 md:px-0 md:w-[70%] md:max-w-[1360px]">
         {/* aria-label carries the unbroken sentence; the spans only control line wrapping */}
         <h1 aria-label={hero.title} className="font-serif font-semibold text-[32px] leading-[1.4] sm:text-[40px] md:text-[46px]">
           <span className="block">{line1}</span>
