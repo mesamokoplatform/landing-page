@@ -16,7 +16,7 @@ export function RestaurantsSection() {
     introWords.slice(15).join(" "),
   ];
   return (
-    <section id="restaurants" className="mx-auto px-6 py-20 md:px-[11%]">
+    <section id="restaurants" className="mx-auto px-6 py-20 md:pl-[15.2%] md:pr-[14.6%]">
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
         <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{restaurants.heading}</h2>

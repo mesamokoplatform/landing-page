@@ -6,7 +6,7 @@ import { WaitlistForm } from "./ui/WaitlistForm";
 
 export function DinersSection() {
   return (
-    <section id="diners" className="mx-auto px-6 py-20 md:px-[11%]">
+    <section id="diners" className="mx-auto px-6 py-20 md:pl-[15.2%] md:pr-[14.6%]">
       <Reveal>
         <Eyebrow>{diners.eyebrow}</Eyebrow>
         <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{diners.heading}</h2>
@@ -17,8 +17,11 @@ export function DinersSection() {
         ))}
       </Reveal>
       {/* grid-rows-subgrid on each card keeps titles a uniform height row-wide,
-          so every card's body text starts on the same line. */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          so every card's body text starts on the same line. Columns cap at Wix's
+          native 316px image width; justify-between then spreads the four cards
+          across the content width so the first image sits on the heading
+          and the last on the header CTA (gaps widen past 32px on very wide screens). */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-between">
         {diners.cards.map((card) => (
           <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0"><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
