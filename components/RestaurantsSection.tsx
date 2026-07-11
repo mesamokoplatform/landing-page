@@ -25,12 +25,13 @@ export function RestaurantsSection() {
         </p>
       </Reveal>
       {/* grid-rows-subgrid on each card keeps titles a uniform height row-wide,
-          so every card's body text starts on the same line. Columns cap at Wix's
-          native 266px video width; justify-between spreads the four across the
-          content width (wider gaps than the diner cards, matching Wix). The 1360px
-          content cap keeps those gaps bounded (~99px max) rather than growing with
-          the viewport. */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,266px))] lg:justify-between">
+          so every card's body text starts on the same line. Columns cap at 310px:
+          the video is 266px native, but Wix hand-sizes each title box wider than
+          the video (up to ~330px) to control its line breaks — 310px is the width
+          at which our two longest wrapped titles ("Make instant updates…" and
+          "Your silent marketing engine…") fall onto their intended 2- and 3-line
+          shapes. justify-between + the 1360px content cap keep the gaps bounded. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,310px))] lg:justify-between">
         {restaurants.cards.map((card) => (
           <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0"><FeatureCard card={card} variant="video" grayscale /></Reveal>
         ))}
