@@ -17,8 +17,10 @@ export function DinersSection() {
         ))}
       </Reveal>
       {/* grid-rows-subgrid on each card keeps titles a uniform height row-wide,
-          so every card's body text starts on the same line. */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          so every card's body text starts on the same line. max-w caps the four
+          columns at Wix's native 316px image width (4×316 + 3×32 gap) so images
+          don't stretch larger than the reference on wide screens. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:max-w-[1360px]">
         {diners.cards.map((card) => (
           <Reveal key={card.title} className="row-span-3 grid grid-rows-subgrid gap-y-0"><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
