@@ -110,7 +110,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
           <img src={asset("/images/monogram.jpg")} alt="Mesa Moko" className="mx-auto h-16 w-auto sm:h-20" />
 
           {state === "done" ? (
-            <p className="mt-14 text-center font-serif text-[22px] text-ink">
+            <p className="mt-14 text-center font-serif font-semibold text-[22px] text-ink">
               You&apos;re on the list — thank you.
             </p>
           ) : (
@@ -119,7 +119,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
                 const id = `${audience}-${f.name}`;
                 return (
                   <div key={f.name} className="flex flex-col gap-2.5">
-                    <label htmlFor={id} className="font-serif text-[15px] text-ink">
+                    <label htmlFor={id} className="font-serif font-semibold text-[15px] text-ink">
                       {f.label}
                       {f.required && <span className="ml-0.5 text-red-600">*</span>}
                     </label>
@@ -131,7 +131,7 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
                       placeholder={f.placeholder ?? f.label}
                       value={values[f.name] ?? ""}
                       onChange={(e) => setValues((v) => ({ ...v, [f.name]: e.target.value }))}
-                      className="border-b border-ink/30 bg-transparent pb-2 font-serif text-[17px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-ink"
+                      className="border-b border-ink/30 bg-transparent pb-2 font-serif font-semibold text-[17px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-ink"
                     />
                   </div>
                 );
