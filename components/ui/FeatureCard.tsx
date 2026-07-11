@@ -40,17 +40,22 @@ export function FeatureCard({
   // Reveal: grayscale cards desaturate, dim cards darken; both restore on hover
   // (desktop) or once scrolled into view (touch, via `revealed`). The transition
   // stays in both states so the touch reveal animates rather than snapping.
-  const transition = " transition-[filter] duration-500 ease-out";
-  const effect = grayscale
+  // NOTE: keep each class a complete, unbroken literal — writing an arbitrary
+  // value like `brightness-[0.6]` immediately before a `${}` interpolation stops
+  // Tailwind's scanner from extracting it (the `]${` trips the parser), so the
+  // filter classes are spelled out here and the shared transition is appended.
+  const filter = grayscale
     ? revealed
-      ? ` grayscale-0${transition}`
-      : ` grayscale${transition} group-hover:grayscale-0`
+      ? "grayscale-0"
+      : "grayscale group-hover:grayscale-0"
     : dim
       ? revealed
-        ? ` brightness-100${transition}`
-        : ` brightness-[0.6]${transition} group-hover:brightness-100`
+        ? "brightness-100"
+        : "brightness-[0.6] group-hover:brightness-100"
       : "";
-  const mediaClass = `absolute inset-0 h-full w-full object-cover${effect}`;
+  const mediaClass = `absolute inset-0 h-full w-full object-cover${
+    filter ? ` ${filter} transition-[filter] duration-500 ease-out` : ""
+  }`;
   // Titles may carry explicit "\n" break points; render each part on its own line.
   const titleLines = card.title.split("\n");
   const flatTitle = titleLines.join(" ");
