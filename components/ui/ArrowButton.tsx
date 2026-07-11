@@ -2,8 +2,12 @@ import type { ReactNode } from "react";
 
 type Variant = "filled" | "outline";
 
+// Desktop uses the shared label-sans (14px / 0.25em tracking / 700). The Figma
+// mobile CTA style is smaller and untracked (Syne 12px / 0 tracking / 600) — so
+// e.g. "Become a Partner Restaurant" stays on one line instead of wrapping.
+// label-sans is unlayered CSS and beats Tailwind utilities, hence the `!`.
 const base =
-  "group label-sans inline-flex items-center gap-3 px-1 py-1.5 text-[14px] leading-none border-[0.5px]";
+  "group label-sans inline-flex items-center gap-3 px-1 py-1.5 text-[14px] leading-none border-[0.5px] max-md:!text-[12px] max-md:!font-semibold max-md:!tracking-normal";
 const styles: Record<Variant, string> = {
   filled: "bg-black text-white border-black",
   outline: "bg-transparent text-ink border-black",
