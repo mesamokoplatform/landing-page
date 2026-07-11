@@ -23,6 +23,11 @@ export const restaurants = {
   heading: "Mesa Moko For Restaurants",
   intro:
     "Mesa Moko empowers visionary restaurants to deliver beautiful, immersive menus and provide visual storytelling to diners before the first bite.",
+  // Mobile-only copy, taken verbatim from the Figma mobile design (wraps
+  // naturally rather than using the desktop's fixed line breaks). Desktop keeps
+  // `intro` above, which matches the live Wix site.
+  introMobile:
+    "Mesa Moko empowers visionary restaurants to deliver interactive menus and provide visual storytelling to customers before the first bite.",
   cta: "Become a Partner Restaurant",
   cards: [
     {
@@ -54,6 +59,12 @@ export const diners = {
   intro: [
     "Mesa Moko is dining, reimagined — an\nexperience built around you.",
     "Browse and discover extraordinary restaurants\nthrough the food they make, all in one place.",
+  ],
+  // Mobile-only copy from the Figma mobile design (wraps naturally). Desktop
+  // keeps `intro` above, which matches the live Wix site.
+  introMobile: [
+    "Mesa Moko is dining, reimagined; an experience built around you.",
+    "Browse beautifully curated restaurant menus in one centralised app and make confident, inspired choices.",
   ],
   cards: [
     {

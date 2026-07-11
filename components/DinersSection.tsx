@@ -9,12 +9,24 @@ export function DinersSection() {
     <section id="diners" className="mx-auto px-6 py-20 md:px-10 md:max-w-[1440px]">
       <Reveal>
         <Eyebrow>{diners.eyebrow}</Eyebrow>
-        <h2 className="font-serif font-semibold text-[30px] leading-tight text-balance sm:text-[36px] md:text-[42px]">{diners.heading}</h2>
-        {diners.intro.map((p) => (
-          <p key={p} className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">
-            {p.split("\n").map((l) => (<span key={l} className="block">{l}</span>))}
-          </p>
-        ))}
+        {/* Figma mobile uses lowercase "for"; desktop keeps the Wix "For". */}
+        <h2 aria-label={diners.heading} className="font-serif font-semibold text-[26px] leading-tight text-balance sm:text-[36px] md:text-[42px]">
+          Mesa Moko <span className="sm:hidden">for</span><span className="hidden sm:inline">For</span> Diners
+        </h2>
+        {/* Mobile: Figma copy, natural wrap. */}
+        <div className="sm:hidden">
+          {diners.introMobile.map((p) => (
+            <p key={p} className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">{p}</p>
+          ))}
+        </div>
+        {/* Desktop: Wix copy with fixed breaks. */}
+        <div className="hidden sm:block">
+          {diners.intro.map((p) => (
+            <p key={p} className="mt-5 font-serif font-semibold text-[24px] leading-snug text-ink/90">
+              {p.split("\n").map((l) => (<span key={l} className="block">{l}</span>))}
+            </p>
+          ))}
+        </div>
       </Reveal>
       {/* grid-rows-subgrid on each card keeps titles a uniform height row-wide,
           so every card's body text starts on the same line. On mobile the cards
