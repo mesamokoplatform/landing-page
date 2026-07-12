@@ -18,7 +18,7 @@ describe("content", () => {
     // Titles may carry "\n" line-break markers; the copy itself must stay verbatim.
     expect(restaurants.cards.map((c) => c.title.replace(/\n/g, " "))).toEqual([
       "Know What Your Menu Is Worth:",
-      "Build deep, lasting relationships and attract new ones:",
+      "Build Deep, Lasting Relationships and Attract New Ones:",
       "Make instant updates with no reprints or QR codes:",
       "Your silent marketing engine, working 24/7 — elevating your brand:",
     ]);
