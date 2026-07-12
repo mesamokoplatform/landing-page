@@ -36,7 +36,7 @@ export const restaurants = {
       media: "/video/restaurant-1.mp4",
     },
     {
-      title: "Build deep, lasting\nrelationships and attract new\nones:",
+      title: "Build Deep, Lasting\nRelationships and Attract New\nOnes:",
       body: "Keep your most interested diners up to date with menu changes and the inspiration behind your dishes. Every new dish you upload is a new opportunity to be discovered by diners who have never heard of you.",
       media: "/video/restaurant-2.mp4",
     },
