@@ -4,13 +4,22 @@ import { ArrowButton } from "./ui/ArrowButton";
 import { Reveal } from "./ui/Reveal";
 
 export function ProblemSection() {
-  // Fixed 6 / 3 / 4-word line breaks so the heading always reads:
-  // "Menus Have Not Kept Up With" / "The Visual, Personalised" / "Expectations Of Today's Diners."
+  // Heading line breaks differ by breakpoint (both from Figma):
+  //  - mobile (< md), 3 lines: "Menus Have Not Kept Up With" / "The Visual,
+  //    Personalised" / "Expectations Of Today's Diners."  (6 / 3 / 4)
+  //  - desktop (md+), 4 lines: "Menus Have Not Kept Up" / "With The Visual,
+  //    Personalised" / "Expectations Of Today's" / "Diners."  (5 / 4 / 3 / 1)
   const words = problem.heading.split(" ");
-  const headingLines = [
+  const mobileHeadingLines = [
     words.slice(0, 6).join(" "),
     words.slice(6, 9).join(" "),
     words.slice(9).join(" "),
+  ];
+  const desktopHeadingLines = [
+    words.slice(0, 5).join(" "),
+    words.slice(5, 9).join(" "),
+    words.slice(9, 12).join(" "),
+    words.slice(12).join(" "),
   ];
   // Fixed 5 / 6 / 5-word body line breaks:
   // "Mesa Moko transforms your static" / "menu into a live, curated experience" / "– tailored to each guest."
@@ -39,7 +48,12 @@ export function ProblemSection() {
         </Reveal>
         <Reveal>
           <h2 aria-label={problem.heading} className="font-serif font-semibold text-[26px] leading-tight sm:text-[36px] md:text-[42px]">
-            {headingLines.map((l) => (<span key={l} className="block">{l}</span>))}
+            <span className="md:hidden">
+              {mobileHeadingLines.map((l) => (<span key={l} className="block">{l}</span>))}
+            </span>
+            <span className="hidden md:block">
+              {desktopHeadingLines.map((l) => (<span key={l} className="block">{l}</span>))}
+            </span>
           </h2>
           <p className="mt-6 font-serif font-semibold text-[24px] leading-snug text-ink/90">
             {bodyLines.map((l) => (<span key={l} className="block">{l}</span>))}
