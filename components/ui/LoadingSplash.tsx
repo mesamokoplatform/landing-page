@@ -2,11 +2,12 @@
 import { useEffect, useState } from "react";
 import { asset } from "@/lib/asset";
 
-// Deterministic intro capped under 2s: the monogram fades in on white, holds,
-// then the whole splash fades out. Matches the Figma loader (a plain white
-// screen with the faint diamond MM monogram — no bar, no wordmark).
-const HOLD_MS = 1550;
-const FADE_MS = 300;
+// Matches the Figma loader: a plain white screen where the diamond MM monogram
+// slowly, gradually fades in (~1.5s) to a faint grey, holds briefly, then the
+// whole splash dissolves to reveal the page. No bar, no wordmark.
+// HOLD_MS covers the full fade-in (1500ms) plus a short hold before the exit.
+const HOLD_MS = 1850;
+const FADE_MS = 450;
 
 // Full-screen monogram shown on every page load while the page settles.
 // Rendered in the SSR markup so it covers content on first paint, then removes
@@ -33,7 +34,7 @@ export function LoadingSplash() {
     <div
       id="mm-splash"
       aria-hidden="true"
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-opacity duration-300 ease-out ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-opacity duration-[450ms] ease-out ${
         hiding ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -45,7 +46,7 @@ export function LoadingSplash() {
       <img
         src={asset("/images/monogram.jpg")}
         alt=""
-        className="h-[190px] w-auto opacity-20 motion-safe:animate-[mmFadeIn_600ms_ease-out] sm:h-[216px]"
+        className="h-[190px] w-auto opacity-20 motion-safe:animate-[mmFadeIn_1500ms_ease-in-out] sm:h-[216px]"
       />
     </div>
   );
