@@ -47,7 +47,7 @@ export function ArrowButton({
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-2.5 w-10 shrink-0"
+        className="h-2.5 w-10 shrink-0 max-md:h-[5px] max-md:w-5"
       >
         <path d="M0 5h38M33 1l5 4-5 4" />
       </svg>
