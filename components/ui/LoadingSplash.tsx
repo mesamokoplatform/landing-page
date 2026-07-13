@@ -38,16 +38,25 @@ export function LoadingSplash() {
         hiding ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      {/* White-background JPEG of the diamond MM monogram; on the white splash it
-          blends seamlessly. Rendered faint to match the Figma loader, with a
-          soft CSS fade-in. Base opacity is the resting value so the mark stays
-          visible even if the animation is throttled (e.g. a backgrounded tab). */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={asset("/images/monogram.jpg")}
-        alt=""
-        className="h-[190px] w-auto opacity-20 motion-safe:animate-[mmFadeIn_1500ms_ease-in-out] sm:h-[216px]"
-      />
+      {/* Diamond MM monogram + "MESA MOKO" wordmark (Figma loader), both
+          white-background JPEGs that blend seamlessly on white. They fade in
+          together over ~1.5s; each keeps its own resting opacity (the monogram
+          sits fainter than the wordmark). The wrapper's base opacity is 1 so the
+          marks stay visible even if the animation is throttled (backgrounded tab). */}
+      <div className="flex flex-col items-center gap-6 opacity-100 motion-safe:animate-[mmFadeIn_1500ms_ease-in-out]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={asset("/images/monogram.jpg")}
+          alt=""
+          className="h-[190px] w-auto opacity-20 sm:h-[216px]"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={asset("/images/logo.jpg")}
+          alt="Mesa Moko"
+          className="w-[150px] max-w-[55vw] opacity-40 sm:w-[168px]"
+        />
+      </div>
     </div>
   );
 }
