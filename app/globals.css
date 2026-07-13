@@ -20,9 +20,10 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loading splash — scale-only entrance so the monogram is always fully opaque
-   and stays visible even if the animation is throttled (e.g. a backgrounded tab). */
-@keyframes mmSplashIn {
-  from { transform: scale(0.96); }
-  to { transform: scale(1); }
+/* Loading splash — soft fade-in for the faint monogram. The base opacity stays
+   at the resting value so the mark is visible even if the animation is throttled
+   (e.g. a backgrounded tab). */
+@keyframes mmFadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.2; }
 }
