@@ -20,17 +20,16 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loader reveal (Figma), sequenced: the monogram fades in grayscale and holds,
-   then darkens to black — and only as it starts darkening (~50% = the words'
-   animation-delay) do "MESA" (from the left) and "MOKO" (from the right) slide in.
-   The words are ALWAYS black (they snap to full opacity in the first frames, so
-   the slide reads as black text moving in, never a grey fade). Each mark's base
-   state is its final resting value, so the logo stays visible if the animation is
-   throttled (e.g. a backgrounded tab). */
+/* Loader reveal (Figma), sequenced: the monogram fades in grayscale and then,
+   with no dead pause, immediately begins darkening to black — and as it starts
+   darkening (~28% = the words' animation-delay) "MESA" (from the left) and "MOKO"
+   (from the right) slide in. The words are ALWAYS black (they snap to full opacity
+   in the first frames, so the slide reads as black text moving in, never a grey
+   fade). Each mark's base state is its final resting value, so the logo stays
+   visible if the animation is throttled (e.g. a backgrounded tab). */
 @keyframes mmMonoReveal {
   0%   { opacity: 0; }
-  35%  { opacity: 0.18; }  /* grayscale */
-  50%  { opacity: 0.18; }  /* hold grey, then start darkening (words slide now) */
+  28%  { opacity: 0.18; }  /* fades in grayscale, then darkens straight away */
   100% { opacity: 1; }     /* black */
 }
 @keyframes mmMesaSlide {
