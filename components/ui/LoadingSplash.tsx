@@ -42,7 +42,7 @@ export function LoadingSplash() {
           white-background JPEGs that blend seamlessly on white. The monogram
           fades in grayscale then darkens to black; the wordmark is split into
           two halves so "MESA" slides in from the left and "MOKO" from the right,
-          converging and settling to a readable grey. Each mark's base state is
+          converging and settling dark (the logotype ink). Each mark's base state is
           its final resting value, so the logo stays visible even if the
           animation is throttled (backgrounded tab). */}
       <div className="flex flex-col items-center gap-6">
@@ -59,13 +59,13 @@ export function LoadingSplash() {
           <img
             src={asset("/images/logo-mesa.jpg")}
             alt=""
-            className="h-[18px] w-auto opacity-50 motion-safe:animate-[mmMesaSlide_1600ms_ease-out] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMesaSlide_1600ms_ease-out] sm:h-[21px]"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={asset("/images/logo-moko.jpg")}
             alt="Mesa Moko"
-            className="h-[18px] w-auto opacity-50 motion-safe:animate-[mmMokoSlide_1600ms_ease-out] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMokoSlide_1600ms_ease-out] sm:h-[21px]"
           />
         </div>
       </div>
