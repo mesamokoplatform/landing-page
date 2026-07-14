@@ -20,10 +20,11 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loading splash — soft fade-in for the faint monogram. The base opacity stays
-   at the resting value so the mark is visible even if the animation is throttled
+/* Loading splash — soft fade-in for the monogram + wordmark. Applied to their
+   wrapper (0 → 1); each mark keeps its own resting opacity. The wrapper's base
+   opacity stays 1 so the marks are visible even if the animation is throttled
    (e.g. a backgrounded tab). */
 @keyframes mmFadeIn {
   from { opacity: 0; }
-  to { opacity: 0.2; }
+  to { opacity: 1; }
 }
