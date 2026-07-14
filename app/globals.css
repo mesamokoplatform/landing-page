@@ -20,22 +20,26 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loader reveal (Figma): the monogram fades in grayscale then darkens to black,
-   while "MESA" slides in from the left and "MOKO" from the right, converging to
-   the wordmark and settling to a readable grey. Each mark's base opacity/position
-   (set in the markup) is its final resting state, so the logo stays visible even
-   if the animation is throttled (e.g. a backgrounded tab). */
+/* Loader reveal (Figma), sequenced: the monogram fades in grayscale and holds,
+   then darkens to black — and only as it starts darkening (~50% = the words'
+   animation-delay) do "MESA" (from the left) and "MOKO" (from the right) slide in.
+   The words are ALWAYS black (they snap to full opacity in the first frames, so
+   the slide reads as black text moving in, never a grey fade). Each mark's base
+   state is its final resting value, so the logo stays visible if the animation is
+   throttled (e.g. a backgrounded tab). */
 @keyframes mmMonoReveal {
   0%   { opacity: 0; }
-  38%  { opacity: 0.18; }  /* grayscale */
-  54%  { opacity: 0.18; }  /* hold */
+  35%  { opacity: 0.18; }  /* grayscale */
+  50%  { opacity: 0.18; }  /* hold grey, then start darkening (words slide now) */
   100% { opacity: 1; }     /* black */
 }
 @keyframes mmMesaSlide {
   0%   { opacity: 0; transform: translateX(-60px); }
+  6%   { opacity: 1; }                              /* black almost immediately */
   100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes mmMokoSlide {
   0%   { opacity: 0; transform: translateX(60px); }
+  6%   { opacity: 1; }
   100% { opacity: 1; transform: translateX(0); }
 }

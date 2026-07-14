@@ -59,13 +59,13 @@ export function LoadingSplash() {
           <img
             src={asset("/images/logo-mesa.jpg")}
             alt=""
-            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMesaSlide_1600ms_ease-out] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMesaSlide_800ms_ease-out_800ms_backwards] sm:h-[21px]"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={asset("/images/logo-moko.jpg")}
             alt="Mesa Moko"
-            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMokoSlide_1600ms_ease-out] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMokoSlide_800ms_ease-out_800ms_backwards] sm:h-[21px]"
           />
         </div>
       </div>
