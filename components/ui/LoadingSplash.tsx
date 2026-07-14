@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react";
 import { asset } from "@/lib/asset";
 
-// Matches the Figma loader: a plain white screen where the diamond MM monogram
-// slowly, gradually fades in (~1.5s) to a faint grey, holds briefly, then the
-// whole splash dissolves to reveal the page. No bar, no wordmark.
-// HOLD_MS covers the full fade-in (1500ms) plus a short hold before the exit.
-const HOLD_MS = 1850;
+// Matches the Figma loader (two-stage reveal): on a plain white screen the logo
+// fades in grayscale, then the monogram darkens to black while the wordmark
+// settles; it holds briefly, then the whole splash dissolves to reveal the page.
+// HOLD_MS covers the full reveal (1600ms) plus a short hold on the black state.
+const HOLD_MS = 2100;
 const FADE_MS = 450;
 
 // Full-screen monogram shown on every page load while the page settles.
@@ -39,22 +39,23 @@ export function LoadingSplash() {
       }`}
     >
       {/* Diamond MM monogram + "MESA MOKO" wordmark (Figma loader), both
-          white-background JPEGs that blend seamlessly on white. They fade in
-          together over ~1.5s; each keeps its own resting opacity (the monogram
-          sits fainter than the wordmark). The wrapper's base opacity is 1 so the
-          marks stay visible even if the animation is throttled (backgrounded tab). */}
-      <div className="flex flex-col items-center gap-6 opacity-100 motion-safe:animate-[mmFadeIn_1500ms_ease-in-out]">
+          white-background JPEGs that blend seamlessly on white. The Figma reveal
+          is two-stage: the logo fades in grayscale, then the monogram darkens to
+          black while the wordmark settles to a readable grey. Each mark's base
+          opacity is its final resting value, so the logo stays visible even if
+          the animation is throttled (backgrounded tab). */}
+      <div className="flex flex-col items-center gap-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/images/monogram.jpg")}
           alt=""
-          className="h-[190px] w-auto opacity-20 sm:h-[216px]"
+          className="h-[190px] w-auto opacity-100 motion-safe:animate-[mmMonoReveal_1600ms_ease-in-out] sm:h-[216px]"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/images/logo.jpg")}
           alt="Mesa Moko"
-          className="w-[150px] max-w-[55vw] opacity-40 sm:w-[168px]"
+          className="w-[150px] max-w-[55vw] opacity-50 motion-safe:animate-[mmWordReveal_1600ms_ease-in-out] sm:w-[168px]"
         />
       </div>
     </div>

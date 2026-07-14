@@ -20,11 +20,18 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loading splash — soft fade-in for the monogram + wordmark. Applied to their
-   wrapper (0 → 1); each mark keeps its own resting opacity. The wrapper's base
-   opacity stays 1 so the marks are visible even if the animation is throttled
-   (e.g. a backgrounded tab). */
-@keyframes mmFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Loader reveal (Figma): the logo first fades in grayscale, then the monogram
+   darkens to black while the wordmark settles to a readable grey. Each mark's
+   base opacity (set in the markup) is its final resting value, so the logo stays
+   visible even if the animation is throttled (e.g. a backgrounded tab). */
+@keyframes mmMonoReveal {
+  0%   { opacity: 0; }
+  38%  { opacity: 0.18; }  /* grayscale */
+  54%  { opacity: 0.18; }  /* hold */
+  100% { opacity: 1; }     /* black */
+}
+@keyframes mmWordReveal {
+  0%   { opacity: 0; }
+  38%  { opacity: 0.18; }  /* grayscale, in step with the monogram */
+  100% { opacity: 0.5; }   /* settles readable */
 }
