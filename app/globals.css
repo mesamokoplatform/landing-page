@@ -20,18 +20,22 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.25em;
 }
 
-/* Loader reveal (Figma): the logo first fades in grayscale, then the monogram
-   darkens to black while the wordmark settles to a readable grey. Each mark's
-   base opacity (set in the markup) is its final resting value, so the logo stays
-   visible even if the animation is throttled (e.g. a backgrounded tab). */
+/* Loader reveal (Figma): the monogram fades in grayscale then darkens to black,
+   while "MESA" slides in from the left and "MOKO" from the right, converging to
+   the wordmark and settling to a readable grey. Each mark's base opacity/position
+   (set in the markup) is its final resting state, so the logo stays visible even
+   if the animation is throttled (e.g. a backgrounded tab). */
 @keyframes mmMonoReveal {
   0%   { opacity: 0; }
   38%  { opacity: 0.18; }  /* grayscale */
   54%  { opacity: 0.18; }  /* hold */
   100% { opacity: 1; }     /* black */
 }
-@keyframes mmWordReveal {
-  0%   { opacity: 0; }
-  38%  { opacity: 0.18; }  /* grayscale, in step with the monogram */
-  100% { opacity: 0.5; }   /* settles readable */
+@keyframes mmMesaSlide {
+  0%   { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 0.5; transform: translateX(0); }
+}
+@keyframes mmMokoSlide {
+  0%   { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 0.5; transform: translateX(0); }
 }
