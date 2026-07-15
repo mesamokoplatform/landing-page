@@ -20,7 +20,7 @@ export function RestaurantsSection() {
       <Reveal>
         <Eyebrow>{restaurants.eyebrow}</Eyebrow>
         {/* Figma mobile uses lowercase "for"; desktop keeps the Wix "For". */}
-        <h2 aria-label={restaurants.heading} className="font-serif font-semibold text-[26px] leading-tight text-balance sm:text-[36px] md:text-[42px]">
+        <h2 aria-label={restaurants.heading} className="font-serif font-bold text-[28px] leading-tight text-balance sm:font-semibold sm:text-[36px] md:text-[42px]">
           Mesa Moko <span className="sm:hidden">for</span><span className="hidden sm:inline">For</span> Restaurants
         </h2>
         {/* Mobile: Figma copy, natural wrap. Desktop: Wix copy with fixed breaks. */}

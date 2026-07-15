@@ -6,11 +6,16 @@ type Variant = "filled" | "outline";
 // mobile CTA style is smaller and untracked (Syne 12px / 0 tracking / 600) — so
 // e.g. "Become a Partner Restaurant" stays on one line instead of wrapping.
 // label-sans is unlayered CSS and beats Tailwind utilities, hence the `!`.
+// Horizontal padding matches the Figma inset (desktop px-4, mobile 8px per the
+// mobile CTA component); vertical stays 6px. Was px-1 (4px) — too tight E/W.
 const base =
-  "group label-sans inline-flex items-center gap-3 px-1 py-1.5 text-[14px] leading-none border-[0.5px] max-md:!text-[12px] max-md:!font-semibold max-md:!tracking-normal";
+  "group label-sans inline-flex items-center gap-3 px-4 py-1.5 text-[14px] leading-none border-[0.5px] max-md:!text-[12px] max-md:!font-semibold max-md:!tracking-normal max-md:px-2";
+// The CTA colour is driven by the --color-cta token (see globals.css) so it can
+// be revised brand-wide in one place; the hero buttons override to white via
+// per-instance classes since they sit on the dark hero video.
 const styles: Record<Variant, string> = {
-  filled: "bg-black text-white border-black",
-  outline: "bg-transparent text-ink border-black",
+  filled: "bg-cta text-white border-cta",
+  outline: "bg-transparent text-cta border-cta",
 };
 
 type Props = {

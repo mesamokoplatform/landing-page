@@ -39,7 +39,7 @@ export function ProblemSection() {
               fixed 42px), so on wide screens the phone is a fixed-px box; below
               1440px (where it would collide with the text) it falls back to a
               proportional size. */}
-          <div className="relative aspect-[59/55] w-[84%] ml-[6.5%] min-[1440px]:w-[586px] min-[1440px]:ml-[-6px] overflow-hidden">
+          <div className="relative aspect-[59/55] w-full md:w-[94%] md:ml-[3%] min-[1440px]:w-[660px] min-[1440px]:ml-[-6px] overflow-hidden">
             {/* The source clip has a ~2px dark line baked into its bottom edge.
                 Anchor to the top and run a few px taller so overflow-hidden
                 clips that line off. */}
