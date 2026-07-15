@@ -35,8 +35,14 @@ export function DinersSection() {
           normal grid. Columns cap at Wix's native 316px image width with a fixed
           32px gap (justify-start, NOT -between) so the gap never widens as the
           viewport grows; at the normal ~15% content width the columns fill it
-          exactly (first image on the heading, last on the header CTA). */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 grid-flow-col auto-cols-[80%] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
+          exactly (first image on the heading, last on the header CTA).
+          overflow-y-hidden: mobile is a purely HORIZONTAL carousel, but
+          overflow-x-auto alone makes overflow-y compute to `auto` (CSS spec),
+          and the cards' pre-reveal `translate-y-6` then adds ~24px of vertical
+          scroll that traps mobile vertical swipes inside the carousel instead of
+          scrolling the page. Clipping Y kills that trap; resting cards fit
+          exactly so nothing visible is clipped. Reset to visible at sm+. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 grid-flow-col auto-cols-[80%] overflow-x-auto overflow-y-hidden snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:overflow-y-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
         {diners.cards.map((card) => (
           <Reveal key={card.title} threshold={0} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="image" dim /></Reveal>
         ))}
