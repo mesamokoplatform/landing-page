@@ -24,10 +24,14 @@ export function Hero() {
           {hero.lines.map((l) => (<p key={l}>{l}</p>))}
         </div>
         <div className="mt-12 flex flex-wrap gap-[27px]">
-          {/* Figma hero buttons (both mobile and desktop): "For Restaurants" is a
-              solid WHITE fill (dark text), "For Diners" is a white outline. */}
+          {/* Figma hero buttons (both mobile and desktop): "For Restaurants" is the
+              "Light Button" — a solid WHITE fill with dark text. "For Diners" is the
+              "Dark Button Outline" — a solid black (#222 "Black") fill with a white
+              outline and white text. It is NOT a see-through outline: the hero is a
+              video, so a transparent fill would show the video through it, whereas
+              Figma shows a clean black pill. */}
           <ArrowButton href={nav[0].href} variant="filled" className="!bg-white !text-ink !border-white">For Restaurants</ArrowButton>
-          <ArrowButton href={nav[1].href} variant="filled" className="!bg-transparent !text-white !border-white">For Diners</ArrowButton>
+          <ArrowButton href={nav[1].href} variant="filled" className="!bg-ink !text-white !border-white">For Diners</ArrowButton>
         </div>
       </div>
     </section>
