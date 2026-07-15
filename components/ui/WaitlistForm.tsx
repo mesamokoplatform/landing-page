@@ -138,11 +138,15 @@ export function WaitlistForm({ audience }: { audience: "restaurant" | "diner" })
               })}
               {/* honeypot */}
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+              {/* Filled, auto-width, left-aligned, one line — matches the Figma
+                  Join Partner / Join Waitlist form CTA (was outline, full-width).
+                  Uses the compact CTA type so the long "Become a Partner
+                  Restaurant" label fits on a single line inside the narrow form. */}
               <ArrowButton
-                variant="outline"
+                variant="filled"
                 type="submit"
                 disabled={!key || state === "sending"}
-                className="mt-4 w-full justify-center"
+                className="mt-4 self-start whitespace-nowrap !text-[12px] !font-semibold !tracking-normal"
               >
                 {CTA[audience]}
               </ArrowButton>

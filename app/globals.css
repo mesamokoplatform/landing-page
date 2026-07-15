@@ -3,6 +3,10 @@
 @theme {
   --color-ink: #222222;
   --color-muted: #555555;
+  /* CTA colour — the Figma "Black" style resolves to #222 (confirmed in Dev
+     Mode: text/fills read var(--Black, #222)), not the harsh pure #000 the build
+     shipped. One token drives every filled + outline CTA. */
+  --color-cta: #222222;
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
 }

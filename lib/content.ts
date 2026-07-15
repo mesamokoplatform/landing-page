@@ -31,12 +31,12 @@ export const restaurants = {
   cta: "Become a Partner Restaurant",
   cards: [
     {
-      title: "Know What Your Menu Is\nWorth:",
+      title: "Know what your menu is\nworth:",
       body: "Understand how your dishes perform against the market and ensure every plate is priced to reflect its true value. Stunning visuals turn every dish into a discovery moment, increasing diner engagement and spend.",
       media: "/video/restaurant-1.mp4",
     },
     {
-      title: "Build Deep, Lasting\nRelationships and Attract New\nOnes:",
+      title: "Build deep, lasting\nrelationships and attract new\nones:",
       body: "Keep your most interested diners up to date with menu changes and the inspiration behind your dishes. Every new dish you upload is a new opportunity to be discovered by diners who have never heard of you.",
       media: "/video/restaurant-2.mp4",
     },
@@ -68,22 +68,22 @@ export const diners = {
   ],
   cards: [
     {
-      title: "Order With Confidence And\nSkip The Guesswork:",
+      title: "Order with confidence and\nskip the guesswork:",
       body: "See every dish brought to life through visuals, before deciding where and what to eat.",
       media: "/images/diner-1.png",
     },
     {
-      title: "Every Menu, Made For You:",
+      title: "Every menu, made for you:",
       body: "The more you use Mesa Moko, the better it knows your taste — automatically identifying the one dish on every menu you open that most closely aligns with your taste profile, while flagging those that conflict with your allergens or dietary requirements.",
       media: "/images/diner-2.png",
     },
     {
-      title: "Discover Restaurants Through\nThe Food, Not The Name:",
+      title: "Discover restaurants through\nthe food, not the name:",
       body: "Fall in love with a dish first — then discover which restaurant made it. Learn how they made it, what inspired it and which other dishes on their menu complement it perfectly.",
       media: "/images/diner-3.png",
     },
     {
-      title: "Build Your Personal Food\nDiary",
+      title: "Build your personal food\ndiary",
       body: "Track what you've tried, share your food moments and save what you want to taste next.",
       media: "/images/diner-4.png",
     },

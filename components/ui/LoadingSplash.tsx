@@ -5,9 +5,10 @@ import { asset } from "@/lib/asset";
 // Matches the Figma loader (two-stage reveal): on a plain white screen the logo
 // fades in grayscale, then the monogram darkens to black while the wordmark
 // settles; it holds briefly, then the whole splash dissolves to reveal the page.
-// HOLD_MS covers the full reveal (1200ms) plus a short hold on the black state.
-const HOLD_MS = 1800;
-const FADE_MS = 450;
+// HOLD_MS covers the full reveal (2200ms) plus a short hold on the black state.
+// Deliberately unhurried — the earlier 1200ms/1800ms timing read as "too swift".
+const HOLD_MS = 2800;
+const FADE_MS = 600;
 
 // Full-screen monogram shown on every page load while the page settles.
 // Rendered in the SSR markup so it covers content on first paint, then removes
@@ -34,7 +35,7 @@ export function LoadingSplash() {
     <div
       id="mm-splash"
       aria-hidden="true"
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-opacity duration-[450ms] ease-out ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-opacity duration-[600ms] ease-out ${
         hiding ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -50,7 +51,7 @@ export function LoadingSplash() {
         <img
           src={asset("/images/monogram.jpg")}
           alt=""
-          className="h-[190px] w-auto opacity-100 motion-safe:animate-[mmMonoReveal_1200ms_ease-in-out] sm:h-[216px]"
+          className="h-[190px] w-auto opacity-100 motion-safe:animate-[mmMonoReveal_2200ms_ease-in-out] sm:h-[216px]"
         />
         {/* Two halves sit flush (the split preserved the inter-word space) and
             slide in from opposite sides to form "MESA MOKO". */}
@@ -59,13 +60,13 @@ export function LoadingSplash() {
           <img
             src={asset("/images/logo-mesa.jpg")}
             alt=""
-            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMesaSlide_800ms_ease-out_350ms_backwards] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMesaSlide_1000ms_ease-out_620ms_backwards] sm:h-[21px]"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={asset("/images/logo-moko.jpg")}
             alt="Mesa Moko"
-            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMokoSlide_800ms_ease-out_350ms_backwards] sm:h-[21px]"
+            className="h-[18px] w-auto opacity-100 motion-safe:animate-[mmMokoSlide_1000ms_ease-out_620ms_backwards] sm:h-[21px]"
           />
         </div>
       </div>

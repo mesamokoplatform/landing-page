@@ -26,12 +26,17 @@ export function FeatureCard({
     if (window.matchMedia("(hover: hover)").matches) return; // desktop keeps hover
     const el = rootRef.current;
     if (!el) return;
-    // The negative rootMargin shrinks the observer's viewport to a central band,
-    // so a card counts as intersecting only while it's roughly centred; toggle
-    // (not one-shot) so it reverts to faded/grayscale when it leaves the band.
+    // Reveal is driven purely by VERTICAL position: the -30% top/bottom margin
+    // makes a card "focused" while it sits in the central band, and it re-fades
+    // once it scrolls out. The left/right margin is a large + value so a card's
+    // HORIZONTAL position never affects intersection — otherwise, in the mobile
+    // carousel, swiping a card past the viewport edge would flip `revealed`
+    // mid-swipe and thrash every video's playbackRate (0.5↔1x), which reads as
+    // the videos "jumping" while you swipe. Now the whole row reveals together
+    // when the section is centred and stays steady through a horizontal swipe.
     const io = new IntersectionObserver(
       ([e]) => setRevealed(e.isIntersecting),
-      { rootMargin: "-30% 0px -30% 0px" }
+      { rootMargin: "-30% 100% -30% 100%" }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -64,7 +69,7 @@ export function FeatureCard({
   const aspect = "aspect-[316/323]";
   return (
     <div ref={rootRef} className="group grid grid-rows-subgrid row-span-3 gap-y-0">
-      <div className={`relative w-full ${aspect} overflow-hidden`}>
+      <div className={`relative w-full ${aspect} overflow-hidden rounded-xl`}>
         {variant === "video" ? (
           <VideoLoop src={card.media} className={mediaClass} slowMo={grayscale} revealed={revealed} />
         ) : (
@@ -74,7 +79,7 @@ export function FeatureCard({
       </div>
       <h3
         aria-label={titleLines.length > 1 ? flatTitle : undefined}
-        className="mt-2.5 text-[26px] leading-tight font-serif font-bold"
+        className="mt-4 text-[26px] leading-tight font-serif font-semibold"
       >
         {titleLines.length > 1 ? (
           <>
