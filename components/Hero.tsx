@@ -24,9 +24,9 @@ export function Hero() {
           {hero.lines.map((l) => (<p key={l}>{l}</p>))}
         </div>
         <div className="mt-12 flex flex-wrap gap-[27px]">
-          {/* Figma hero buttons: mobile → "For Restaurants" solid WHITE fill,
-              "For Diners" white outline; desktop → BOTH white outline. */}
-          <ArrowButton href={nav[0].href} variant="filled" className="!bg-white !text-ink !border-white md:!bg-transparent md:!text-white">For Restaurants</ArrowButton>
+          {/* Figma hero buttons (both mobile and desktop): "For Restaurants" is a
+              solid WHITE fill (dark text), "For Diners" is a white outline. */}
+          <ArrowButton href={nav[0].href} variant="filled" className="!bg-white !text-ink !border-white">For Restaurants</ArrowButton>
           <ArrowButton href={nav[1].href} variant="filled" className="!bg-transparent !text-white !border-white">For Diners</ArrowButton>
         </div>
       </div>
