@@ -29,4 +29,6 @@ this repository. Nothing in `components/` sends this email.
 - The HTML is table‑based with inline styles for email‑client compatibility.
 - Web fonts don't load reliably in email, so these fall back to `Georgia, serif`
   (for the Cormorant feel) and a system sans for the uppercase labels.
-- Social links point at the same handles as the site footer; update if those change.
+- Social links point at the same handles as the site footer. They are duplicated
+  in **both** `restaurant.html` and `diner.html`, so if a handle changes, update
+  it in both files (and the site footer).

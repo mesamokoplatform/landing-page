@@ -5,8 +5,17 @@ import { asset } from "@/lib/asset";
 // Matches the Figma loader (two-stage reveal): on a plain white screen the logo
 // fades in grayscale, then the monogram darkens to black while the wordmark
 // settles; it holds briefly, then the whole splash dissolves to reveal the page.
-// HOLD_MS covers the full reveal (2200ms) plus a short hold on the black state.
 // Deliberately unhurried — the earlier 1200ms/1800ms timing read as "too swift".
+//
+// Timing budget (all values also live in the animate-[…] classes / globals.css
+// keyframes below — keep them in sync when retiming):
+//   reveal   = 2200ms  (mmMonoReveal; the wordmark slides 620ms→1620ms finish
+//                       earlier, so the monogram reveal is what gates the hold)
+//   hold     =  600ms  (dwell on the fully-black state before dissolving)
+//   HOLD_MS  = 2800ms  = reveal + hold — when the dissolve starts
+//   FADE_MS  =  600ms  = the dissolve length; MUST equal the container's
+//                       `transition-opacity duration-[600ms]` so `setGone` fires
+//                       exactly when the opacity transition ends, not before/after.
 const HOLD_MS = 2800;
 const FADE_MS = 600;
 
