@@ -38,7 +38,14 @@ export function RestaurantsSection() {
           The -0.02em title tracking shaves the longest first line ("Build deep,
           lasting relationships", ~324px at 26px) down to fit the 316px column so
           it stays on one line, without dropping the 26px size. */}
-      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 [&_h3]:tracking-[-0.02em] grid-flow-col auto-cols-[80%] overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
+      {/* overflow-y-hidden: this is a purely HORIZONTAL carousel on mobile, but
+          setting only overflow-x-auto makes overflow-y compute to `auto` (CSS
+          spec), and the cards' pre-reveal `translate-y-6` then adds ~24px of
+          vertical scroll — which traps mobile vertical swipes inside the carousel
+          instead of scrolling the page. Clipping Y kills that trap; the resting
+          (revealed) cards fit exactly, so nothing visible is clipped. Reset to
+          visible at sm+ where it's a normal grid. */}
+      <div className="mt-14 grid grid-rows-[auto_auto_auto] gap-8 [&_h3]:tracking-[-0.02em] grid-flow-col auto-cols-[80%] overflow-x-auto overflow-y-hidden snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-flow-row sm:auto-cols-auto sm:snap-none sm:overflow-x-visible sm:overflow-y-visible sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,316px))] lg:justify-start">
         {restaurants.cards.map((card) => (
           <Reveal key={card.title} threshold={0} className="row-span-3 grid grid-rows-subgrid gap-y-0 snap-start"><FeatureCard card={card} variant="video" grayscale /></Reveal>
         ))}
